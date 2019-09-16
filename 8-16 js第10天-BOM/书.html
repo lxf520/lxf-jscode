@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        div {
+            width: 1000px;
+            height: 600px;
+            border: 2px solid #eee;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        li {
+            float: left;
+            border: 1px solid rgb(41, 144, 228);
+            margin: 5px;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+
+
+        </ul>
+    </div>
+
+    <script>
+        var data = [{
+            src: "img/1.jpg",
+            name: "白夜行",
+            "price": "￥ 23.00"
+        }, {
+            src: "./img/2.jpg",
+            name: "黄金时代",
+            "price": "￥ 344.00"
+        }, {
+            src: "./img/3.jpg",
+            name: "挪威的森林",
+            "price": "￥ 23.00"
+        }, {
+            src: "./img/4.jpg",
+            name: "黄河青山",
+            "price": "￥ 23.00"
+        }, {
+            src: "./img/5.jpg",
+            name: "海上明信片",
+            "price": "￥ 2.00"
+        }, {
+            src: "./img/6.jpg",
+            name: "太空漫游",
+            "price": "￥ 89.00"
+        }, {
+            src: "./img/7.jpg",
+            name: "小王子",
+            "price": "￥ 43.00"
+        }, {
+            src: "./img/8.jpg",
+            name: "霍乱时期的爱情",
+            "price": "￥ 123.00"
+        }];
+
+        var oUl = document.getElementsByTagName('ul')[0];
+
+        oUl.innerHTML = data.map(function (ele, index) {
+            return `<li>
+                <a href="#">
+                    <img src=${ele.src} alt="">
+                    <h3>${ele.name}</h3>
+                    <p>${ele.price}</p>
+                </a>
+            </li>`
+        }).join('');
+
+        var oLis = document.getElementsByTagName('li');
+        for(var i = 0,len = oLis.length; i<len; i++){
+            oLis[i].index = i;
+            oLis[i].onclick = function(){
+                // this指向的是当前的标签
+                var item = data[this.index];
+                console.log(item);
+                // 把拿到的对象转为字符串
+                var queryString = o2s(item);
+                 window.location.href = "./detail.html?" + queryString;                
+            }
+        }
+
+        
+/* {name:"zs",age:18} => name=zs&age=18 */
+        function o2s(o){
+            var arr =[];
+            for(var k in o){
+                //!!!!!!!FUCK!!!!!!!!!  拼接字符串等号左右边不能加空格！ 浪费我半个钟
+                arr.push(`${k}=${o[k]}`);  //!!!!!!!!!!
+            }
+            return arr.join('&');
+        }
+    </script>
+</body>
+
+</html>

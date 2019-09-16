@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function secret(){
+            var a = (arguments[0]+5)%10;
+            var b = (arguments[1]+5)%10;
+            var c = (arguments[2]+5)%10;
+            var d = (arguments[3]+5)%10;
+            var temp =a;
+                a = d;
+                d = temp;
+            var tar = b;
+                b = c;
+                c = tar;
+            //console.log(a,b,c,d);
+            return [a,b,c,d];
+        }
+        // secret(1,2,3,4);
+         console.log(secret(1,5,7,9));
+        
+    </script>
+</body>
+</html>

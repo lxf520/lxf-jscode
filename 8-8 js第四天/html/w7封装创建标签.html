@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="text" placeholder="标签">
+    <input type="text" id="word" placeholder="内容">
+    <button>确定</button>
+    <span></span>
+    <script>
+        var bq = document.getElementById("text");
+        var content = document.getElementById("word");
+        var btn = document.getElementsByTagName("button")[0];
+        var oSpan = document.getElementsByTagName("span")[0];
+
+        /*创建标签*/
+        btn.onclick = function () {
+            var label = bq.value;
+            var cont = content.value;
+            buildTag(cont,label);
+        }
+
+        function buildTag(content,label){
+            var tag = document.createElement(label);    //创建标签
+            tag.innerHTML = content;                       //插入内容
+            document.body.appendChild(tag);             //插到页面
+        }
+    </script>
+</body>
+
+</html>

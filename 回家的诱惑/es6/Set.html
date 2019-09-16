@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 跟数组很像  （唯一） Set集合 -->
+    <script>
+        let data = new Set();
+        data.add(10);
+        data.add(98);
+        data.delete(10);
+        console.log(data.size);
+        
+        data.clear();
+        console.log(data);
+        
+console.log('----------');
+
+        let dataSet = new Set();
+        dataSet.add(1);
+        dataSet.add(2);
+        dataSet.add(3);
+        dataSet.add(4);
+        for (const iterator of dataSet) {
+            console.log(iterator);
+            
+        }   
+console.log('-------------');
+
+        // 数组去重
+        var arr = [1,2,3,12,3,1,2];
+        var res = [];
+        for(var i = 0; i< arr.length; i++){
+            if(res.indexOf(arr[i]) == -1 ){
+                res.push(arr[i]);
+            }
+        }
+        console.log(res);
+        
+        console.log('-------------');
+
+        var Set1 = new Set(arr);
+        console.log(Set1);
+         
+        console.log('**********');
+        // 创建集合传递参数
+
+        // 数组去重1
+        var qwe = Array.from(new Set(arr));
+        console.log(qwe[0]);
+        
+        console.log( Array.from(new Set(arr)) );
+        // 数组去重2
+        console.log([...new Set(arr)]);
+
+
+        console.log('**********');
+        // 字符串去重
+        var string = 'abcasbdabsbdbsabbsbdbabbasbdbabsdb';
+        console.log([...new Set(string)].join(''));
+        
+    </script>
+</body>
+</html>

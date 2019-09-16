@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 倒计时效果。
+        要求：
+        在页面中实时显示距离毕业时间的倒计时，实时更新。 -->
+    <h1>距离毕业还有：</h1>
+    <h2 id="leave"></h2>
+    <script>
+        // Date.parse(end.value)
+        var leave = document.getElementById('leave');
+
+
+        setInterval(() => {
+            var now = new Date();
+            var star = now.getTime();
+
+            var deadLine = '2019-12-16';
+            var end = Date.parse(deadLine);
+
+            var offset = end - star;
+
+            var day = Math.floor(offset / 1000 / 60 / 60 / 24);
+            var hour = f(Math.floor(offset / 1000 / 60 / 60 % 24));
+            var min = f(Math.floor(offset / 1000 / 60 % 60));
+            var second = f(Math.floor(offset / 1000 % 60));
+
+            leave.innerHTML = ` ${day}天${hour}小时${min}分钟${second}秒 `
+
+        }, 1000);
+
+        function f(num){
+            return  ('00'+num).slice(-2);
+        }
+    </script>
+</body>
+
+</html>

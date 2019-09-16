@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            border-spacing: 0;
+            width: 100%;
+        }
+
+        table td {
+            height: 50px;
+            padding: 0 10px;
+        }
+        table tr:nth-child(odd){
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" placeholder="输入行数">
+    <input type="text" placeholder="输入列数">
+    <button>生成表格</button>
+    <table >
+        <caption></caption>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        window.onload = function () {
+            var oIp1 = document.getElementsByTagName("input")[0];
+            var oIp2 = document.getElementsByTagName("input")[1];
+            var oBtn = document.querySelector("button");
+            var oTbody = document.querySelector("tbody");
+            var cap = document.querySelector('caption');
+
+            oBtn.onclick = function () {
+                let row = oIp1.value;
+                let col = oIp2.value;
+                
+                cap.innerText = '我是一个表格';
+                for (var i = 0; i < row; i++) {
+                    var tr = document.createElement('tr');
+                    for(var j=0; j<col ; j++){
+                        var td = document.createElement('td');
+                        td.innerText = `第 ${i}行，第${j} 列`
+                        tr.appendChild( td);
+                    }
+                    oTbody.appendChild(tr);
+                }
+
+
+
+            }
+        }
+    </script>
+</body>
+
+</html>

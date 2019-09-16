@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            width: 1100px;
+            border: 2px solid #ccc;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+
+        </ul>
+    </div>
+    <script>
+        var arr = [{
+            img: 'img/1.jpg',
+            name: '京东巴拉巴拉',
+            price: '￥123',
+        }, {
+            img: 'img/1.jpg',
+            name: '京东巴拉巴拉',
+            price: '￥123',
+        }, {
+            img: 'img/1.jpg',
+            name: '京东巴拉巴拉',
+            price: '￥123',
+        }, {
+            img: 'img/1.jpg',
+            name: '京东巴拉巴拉',
+            price: '￥123',
+        }, {
+            img: 'img/1.jpg',
+            name: '京东巴拉巴拉',
+            price: '￥123',
+        }, {
+            img: 'img/1.jpg',
+            name: '京东巴拉巴拉',
+            price: '￥123',
+        }, {
+            img: 'img/1.jpg',
+            name: '京东巴拉巴拉',
+            price: '￥123',
+        }, ]
+
+        var oBox = document.getElementById("box");
+        oBox.innerHTML = arr.map(function (ele, index) {
+            return `<li>
+                        <img src=${ele.img} alt="">
+                        <p>${ele.name}</p>
+                        <span>${ele.price}</span>
+                    </li>`
+        })
+    </script>
+
+</body>
+
+</html>

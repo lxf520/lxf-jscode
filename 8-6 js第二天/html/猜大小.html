@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ip1">
+    <button>猜一猜</button>
+
+    <script>
+        var target = parseInt(Math.random()*100);
+        var ip1 = document.getElementById("ip1");
+        var btn = document.getElementsByTagName("button")[0];
+
+        btn.onclick = function(){
+            var num = ip1.value;
+            if(num == target){
+                alert("恭喜你，猜对了");
+            }
+            else if(num > target){
+                alert("不好意思，大了");
+            }
+            else{
+                alert("哈哈哈，猜小了");
+            }
+            console.log(target);
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            margin: 50px auto;
+            padding: 25px;
+            width: 250px;
+            height: 450px;
+            background-color: #ccc;
+        }
+
+        ul li {
+            text-align: center;
+            color: white;
+            width: 73px;
+            height: 70px;
+            background-color: #333;
+            float: left;
+            margin: 0 15px 10px 0;
+        }
+
+        li:nth-child(3),
+        li:nth-child(6),
+        li:nth-child(9),
+        li:nth-child(12) {
+            margin-right: 0;
+        }
+
+        .choose {
+            background-color: #fff;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 实现简易日历的效果(参考效果图)。 -->
+    <div class="box">
+        <ul>
+            <li>
+                <h2>1</h2>
+                <p>JAN</p>
+            </li>
+            <li>
+                <h2>2</h2>
+                <p>JAN</p>
+            </li>
+            <li>
+                <h2>3</h2>
+                <p>JAN</p>
+            </li>
+            <li>
+                <h2>4</h2>
+                <p>JAN</p>
+            </li>
+            <li>
+                <h2>5</h2>
+                <p>JAN</p>
+            </li>
+            <li>
+                <h2>6</h2>
+                <p>JAN</p>
+            </li>
+            <li>
+                <h2>7</h2>
+                <p>JAN</p>
+            </li>
+            <li>
+                <h2>8</h2>
+                <p>JAN</p>
+            </li>
+            <li>
+                <h2>9</h2>
+                <p>JAN</p>
+            </li>
+            <li>
+                <h2>10</h2>
+                <p>JAN</p>
+            </li>
+            <li>
+                <h2>11</h2>
+                <p>JAN</p>
+            </li>
+            <li>
+                <h2>12</h2>
+                <p>JAN</p>
+            </li>
+        </ul>
+        <div class="info">
+            <h2 id="month"></h2>
+            <p id="txt"></p>
+        </div>
+    </div>
+
+    <script>
+        var data = [{
+                cap: '1月活动',
+                con: '快过年啦'
+            },
+            {
+                cap: '2月活动',
+                con: '快过年啦'
+            }, {
+                cap: '3月活动',
+                con: '快过年啦'
+            }, {
+                cap: '4月活动',
+                con: '快过年啦'
+            }, {
+                cap: '5月活动',
+                con: '快过年啦'
+            }, {
+                cap: '6月活动',
+                con: '快过年啦'
+            },
+            {
+                cap: '7月活动',
+                con: '快过年啦'
+            },
+            {
+                cap: '8月活动',
+                con: '快过年啦'
+            }, {
+                cap: '9月活动',
+                con: '快过年啦'
+            }, {
+                cap: '10月活动',
+                con: '快过年啦'
+            }, {
+                cap: '11月活动',
+                con: '快过年啦'
+            }, {
+                cap: '12月活动',
+                con: '快过年啦'
+            },
+
+        ]
+
+        var lis = document.getElementsByTagName("li");
+        var oMonth = document.getElementById('month');
+        var oTxt = document.getElementById('txt');
+
+        
+
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].index = i;
+
+            lis[i].onclick = function () {
+                for(let i = 0;i < lis.length; i++){
+                    lis[i].className = '';
+                }
+                var item = data[this.index];
+                lis[this.index].className = 'choose';
+                console.log(item);
+                oMonth.innerText = item.cap;
+                oTxt.innerHTML = item.con;
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>

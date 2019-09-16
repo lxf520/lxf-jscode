@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var lis = document.querySelectorAll('.shop-list')[0].getElementsByTagName('li');
+        var arr = [];
+        for (var i = 0; i < lis.length; i++) {
+            var o = {};
+            o.src = lis[i].querySelectorAll('img')[0].src;
+            o.price = lis[i].querySelectorAll('.price')[0].innerText;
+            o.name = lis[i].querySelectorAll('.ellipsis')[0].innerText;
+            arr.push(o);
+        }
+        JSON.stringify(arr)
+      </script>
+</body>
+
+</html>
+

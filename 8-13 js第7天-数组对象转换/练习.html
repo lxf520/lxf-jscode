@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            height: 400px;
+            width: 1010px;
+            margin: 20px auto;
+            border: 2px solid #ccc;
+            text-align: center;
+        }
+
+        li {
+            float: left;
+            width: 200px;
+            border: 1px solid #eee;
+        }
+        img{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <!-- <li>
+                <img src="img/1.jpg" alt="">
+                <p href="#">飞利浦剃须刀</p>
+                <h2>￥715</h2>
+                <span>9100+条评价</span>
+            </li>
+            <li>
+                <img src="img/1.jpg" alt="">
+                <p href="#">飞利浦剃须刀</p>
+                <h2>￥715</h2>
+                <span>9100+条评价</span>
+            </li>
+            <li>
+                <img src="img/1.jpg" alt="">
+                <p href="#">飞利浦剃须刀</p>
+                <h2>￥715</h2>
+                <span>9100+条评价</span>
+            </li>
+            <li>
+                <img src="img/1.jpg" alt="">
+                <p href="#">飞利浦剃须刀</p>
+                <h2>￥715</h2>
+                <span>9100+条评价</span>
+            </li> -->
+
+        </ul>
+    </div>
+    <script>
+        var data = [{
+            name: "飞利浦剃须刀",
+            src: "img/1.jpg",
+            price: "￥715",
+            dis: "9100+条评价"
+        }, {
+            name: "戴森吸尘器",
+            src: "img/2.jpg",
+            price: "￥1",
+            dis: "1100+条评价"
+        }, {
+            name: "日本进口什么鬼",
+            src: "img/3.jpg",
+            price: "￥105",
+            dis: "24W+条评价"
+
+        }, {
+            name: "韩国进口女神蚕丝",
+            src: "img/4.jpg",
+            price: "￥165",
+            dis: "4.6W+条评价"
+        }, {
+            name: "肌美精",
+            src: "img/5.jpg",
+            price: "68",
+            dis: "1条评价"
+        } ];
+        var oBox = document.getElementsByClassName("box");
+        var oUl = document.getElementsByTagName("ul")[0];
+
+        function f() {
+            oUl.innerHTML = data.map(function (ele,index) {
+            return ` <li>
+                <img src = ${ele.src} alt="">
+                <p href="#">${ele.name}</p>
+                <h2>${ele.price}</h2>
+                <span>${ele.dis}</span>
+            </li>  `
+            }).join("");
+
+
+        }
+        f();
+    </script>
+</body>
+
+</html>

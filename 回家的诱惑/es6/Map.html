@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Map和对象差不多 （允许设置对象作为key）   映射
+        let o = {
+            name : 'lw',
+            age : 18
+        }
+
+        let map = new Map();
+        map.set('name','laowang');
+        map.set('age',18);
+        map.set(o,666)
+        // map.delete('name');
+        // map.clear();
+        console.log(map);
+
+        for (const [key,value] of map) {
+            console.log(key,value);
+            
+        }
+        // name laowang
+        // age 18
+        // {name: "lw", age: 18} 666
+
+       
+        for (const i in o) {
+            console.log(i);
+        }
+        // name
+        // age
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(Math.ceil(14.2) );
+        console.log(Math.floor(14.8));
+        console.log(Math.round(14.58));
+        
+    
+    </script>
+    <script>
+        var time = new Date();
+        var year = time.getFullYear();
+        var month = time.getMonth();
+        var date = time.getDate();
+
+        var hour = time.getHours();
+        var minutes = time.getMinutes();
+        var second = time.getSeconds();
+        var millisecond = time.getMilliseconds();
+var week = time.getDay();
+        console.log(`${year}年${month}月${date}日${hour}：${minutes}：${second}：${millisecond}`);
+        console.log(week);
+        
+
+        time.setFullYear(1998);
+        console.log(time);
+        
+        var date = new Date('2016-11-2');
+        console.log(date);
+        var date2 = new Date('2017-8-8 10:20:10');
+        console.log(date2);
+        //时间戳
+        var date3 = new Date(777777777777);
+        console.log(date3);
+        
+
+        console.log(date.toDateString());
+        console.log(date.toLocaleString());
+        
+    </script>
+</body>
+</html>

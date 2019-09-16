@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #yuan{
+            width: 100px;height: 100px;
+            position: absolute;
+            background-color: #195;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="body">
+        <div id="yuan"></div>
+    </div>
+    
+
+
+    <script>
+        var circle = document.getElementById('yuan');
+
+        circle.onmousedown = function(e){
+            e.preventDefault();
+            var e = e||window.event;
+
+            document.onmousemove = function(event){
+                var event = event || window.event;
+                circle.style.left = event.clientX - e.offsetX + 'px';
+                circle.style.top= event.clientY - e.offsetY + 'px';
+            }
+        }
+        circle.onmouseup = function(e){
+            document.onmousemove = null;
+        }
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="text" placeholder="字符串">
+    <input type="text" id="word" placeholder="次数">
+    <button>确定</button>
+    <script>
+        var text = document.getElementById("text");
+        var word = document.getElementById("word");
+        var btn = document.getElementsByTagName("button")[0];
+        btn.onclick = function () {
+            var txt = text.value;
+            var w = word.value*1;
+            f(txt,w);
+
+        }
+//封装函数，该函数接收两个参数，一个参数为要打印的字符串，另一个字符串为要打印的次数。
+        function f(text,n) {
+            for(var i=1; i<=n;i++){
+                console.log(text);
+                console.log(i);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

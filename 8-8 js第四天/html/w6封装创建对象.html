@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="text">
+    <input type="text" id="word">
+    <button>确定</button>
+    <span></span>
+    <script>
+        var text = document.getElementById("text");
+        var word = document.getElementById("word");
+        var btn = document.getElementsByTagName("button")[0];
+        var oSpan = document.getElementsByTagName("span")[0];
+
+        btn.onclick = function () {
+            var txt = text.value;
+            var w = word.value*1;
+            f(txt,w);
+            
+        }
+        function f(name,age){
+            var O = new Object();
+            O.name = name;
+            O.age = age;
+            console.log(O);
+            oSpan.innerHTML = `name:${name}  age:${age}`;
+            return O;
+        }
+
+
+    </script>
+</body>
+
+</html>

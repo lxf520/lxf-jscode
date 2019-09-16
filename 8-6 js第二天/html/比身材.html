@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="hei" placeholder="请输入身高">
+    <input type="text" id="wei" placeholder="请输入体重">
+    <button>确定</button>
+
+    <script>
+        var hei = document.getElementById("hei");
+        var wei = document.getElementById("wei");
+        var btn = document.getElementsByTagName("button")[0];
+        btn.onclick = function () {
+            var w = wei.value;
+            var h = hei.value;
+            var tar = (h - 108) * 2;
+            if (h && w) {
+                console.log(tar);
+                if (w == tar) {
+                    alert("完美身材，你可以当健身教练了");
+                }
+                else if (w <= tar+10 && w >= tar-10) {
+                    alert("你的身材还行，继续保持");
+                }
+                else if (w > tar+10) {
+                    alert("哈哈，胖纸，你能不能少吃点");
+                }
+                else if(w < tar+10){
+                    alert("小可爱，你太瘦了，多吃肉");
+                }
+            }
+
+            
+        }
+    </script>
+</body>
+
+</html>

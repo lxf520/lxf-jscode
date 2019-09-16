@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .item{
+            width: 100px;
+            height: 50px;
+            margin: 5px;
+            background-color: #185;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        for(var i = 1000 , j=0; i<=2020;i++){
+            if(i%4==0&&i%100!=0||i%400==0){
+                j++;
+                var oSpan = document.createElement("span");     //定义节点 
+                oSpan.innerHTML = i;                            //添加内容
+                oSpan.className = "item";                       //添加类名
+                document.body.appendChild(oSpan);               //添加节点到页面
+
+                if(j%6==0){
+                    var oBr = document.createElement("br");
+                    document.body.appendChild(oBr);
+                }
+
+            }
+        }
+    </script>
+</body>
+</html>

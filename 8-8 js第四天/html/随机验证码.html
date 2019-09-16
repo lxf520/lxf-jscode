@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮</button>
+    <span>验证码</span>
+    <span></span>
+
+    <script>
+        var btn = document.getElementsByTagName("button")[0];
+        var oSpan = document.getElementsByTagName("span")[1];
+        var text = "SDJFHDFJDHJSHFJSHDUYRWUIIQ123456789";
+        var len = text.length-1;
+        
+        btn.onclick = function(){
+            var cont = "";
+            for(var i = 0; i<4 ; i++){
+                var index = fn(len);
+                cont += text[index];
+            }
+            oSpan.innerHTML = cont;
+        }
+
+        function fn(max){
+            return parseInt(Math.random()*(max+1));
+        }
+    </script>
+</body>
+</html>

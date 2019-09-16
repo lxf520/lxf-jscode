@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>详情页</div>
+    <div class="name"></div>
+    <div class="price"></div>
+    <img src="" alt="">
+    <script>
+        // 先获取传过来的数据
+        var url = window.location.href;
+        console.log(url);
+        
+        // 拿过来是乱码的，转一下格式
+        var queryString = decodeURI(window.location.search.slice(1));
+        console.log(queryString);
+
+        // src = ./img/4.jpg&name = 黄河青山&price = ￥ 23.00
+        // 字符串转对象
+        function s2o(str){
+            var arr = str.split('&');
+            // ["src=./img/7.jpg", "name=小王子", "price=2343.00"]
+            var o = new Object();
+            arr.forEach(ele => {
+                var temp = ele.split('=');  //["src","./img/7.jpg"]
+                o[temp[0]] = temp[1];
+            });
+            return o;
+        }
+        
+        var data = s2o(queryString);
+        console.log(data);  //{"src ": " ./img/1.jpg", "name ": " 白夜行", "price ": " ￥ 23.00"}
+        var oName = document.getElementsByClassName('name')[0];
+        var oPrice = document.getElementsByClassName('price')[0];
+        var oImg = document.querySelectorAll('img')[0];
+        console.log(data.src );
+        
+
+        oName.innerHTML = "商品名字:" + data.name;
+        oPrice.innerHTML = "价格" + data.price;
+        oImg.src = data.src;
+        
+
+    </script>
+</body>
+</html>

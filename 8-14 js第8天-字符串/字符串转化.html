@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input {
+            width: 800px;
+            height: 20px;
+        }
+
+        div {
+            font-size: 120px;
+            color: aqua;
+            width: 1100px;
+            height: 300px;
+            border: 2px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text">
+    <button>揭秘</button>
+    <div></div>
+    <marquee width="1200" hight="400" behavior="scroll" behavior="alternate" direction="">
+        <span>大瓜瓜</span>
+    </marquee>
+    <marquee width="1200" hight="400" color="pink" behavior="scroll" scrollamount="5" scrolldelay="90" direction="right">
+        <span>大猪猪</span>
+    </marquee>
+
+    <script>
+        // 21834, 29916, 25105, 21916, 27426, 20320, 24456, 20037, 20102
+        var inp = document.getElementsByTagName("input")[0];
+        var btn = document.getElementsByTagName("button")[0];
+        var oDiv = document.getElementsByTagName("div")[0];
+        btn.onclick = function () {
+            var value = inp.value;
+            var arr = value.split(',');
+            var res = '';
+            arr.forEach(element => {
+                res += String.fromCharCode(element);
+            });
+            oDiv.innerHTML = res;
+            fn(res);
+            console.log(res);
+
+
+        }
+
+        function fn(str) {
+            setInterval(function () {
+                var txt = oDiv.innerHTML;
+                var star = txt.slice(0, 1);
+                var end = txt.slice(1);
+                var string = end + star;
+                oDiv.innerHTML = string;
+            }, 600)
+        }
+
+        // var res = "";
+        // for (var i = 0, len = arr.length; i < len; i++) {
+        //     res += String.fromCharCode(arr[i]);
+        // }
+        // console.log(res);
+    </script>
+</body>
+
+</html>

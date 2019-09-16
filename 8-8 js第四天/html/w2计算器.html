@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <input id="i1" type="text" name="" placeholder="数字">
+    <input type="text" id="type">
+    <input id="i2" type="text" value="" placeholder="数字">
+    <button id="btn" type="">=</button>
+    <input id="jieguo" type="text" />
+
+    <script type="text/javascript">
+        var btn = document.getElementById("btn");
+             i1 = document.getElementById("i1");
+             i2 = document.getElementById("i2");
+             n3 = document.getElementById("jieguo");
+             type = document.getElementById("type");
+         
+        btn.onclick = function () {
+            var n1 = parseInt(i1.value);
+            var n2 = parseInt(i2.value);
+            var res = 0;  //初始化
+
+            switch (type.value) {
+                case "+":
+                    res = n1 + n2;
+                    break;
+                case "-":
+                    res = n1 - n2;
+                    break;
+                case "*":
+                    res = n1 * n2;
+                    break;
+                case "/":
+                    res = n1 / n2;
+                    break;
+
+                case "%":
+                    res = n1 % n2;
+                    break;
+            }
+           n3.value = res;
+        }
+    </script>
+</body>
+
+</html>

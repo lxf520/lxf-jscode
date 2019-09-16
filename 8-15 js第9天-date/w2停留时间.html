@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>你已经在网站停留：</h2>
+    <span></span>
+
+    <script>
+        var oSpan = document.getElementsByTagName('span')[0];
+        var hour = 0;
+        var min = 0;
+        var second = 0;
+        function interval(){
+            setInterval(() => {
+                second++;
+                if(second == 60){
+                    min++;
+                    second =0;
+                }
+                if(min == 60){
+                    hour++;
+                    min = 0;
+                }
+                oSpan.innerHTML = `${hour}时${min}分${second}秒`;
+
+            }, 1000);
+            
+        }
+        interval();
+    
+    </script>
+</body>
+</html>

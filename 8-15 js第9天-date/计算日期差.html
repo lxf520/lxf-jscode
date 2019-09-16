@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="date">
+    <input type="date">
+    <button>计算日期差</button>
+    <span></span>
+
+    <script>
+        var start = document.getElementsByTagName('input')[0];
+        var end = document.getElementsByTagName('input')[1];
+        var btn = document.getElementsByTagName('button')[0];
+        var oSpan = document.getElementsByTagName('span')[0];
+
+        btn.onclick = function(){
+            var offset = Math.abs(Date.parse(end.value) - Date.parse(start.value));
+            console.log(end.value);
+            
+            console.log(offset);
+            var day = offset/1000/60/60/24;
+            oSpan.innerHTML = day + '天';
+        }
+    
+    </script>
+</body>
+</html>

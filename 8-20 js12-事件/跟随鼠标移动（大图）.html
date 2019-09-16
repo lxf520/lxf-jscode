@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .box{
+            width: 1200px;
+            height: 250px;
+            margin: 50px auto;
+        }
+        .box img{
+            width: 270px;
+            height: 250px;
+            margin-right: 20px;
+        }
+        .active{
+            border: 1px solid red;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="img/1.jpg" alt="">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+    </div>
+
+    <script>
+        var oBox = document.getElementsByClassName('box')[0].getElementsByTagName('img');
+        console.log(oBox[0]);
+        
+        for(var i=0; i<oBox.length; i++){
+            oBox[i].index = i;
+            oBox[i].onclick = function(){
+                for(var i=0;i<4;i++){
+                    oBox[i].className = '';
+                }
+                this.className = 'active';
+                
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .box{
+            width: 400px;
+            height: 500px;
+            border: 2px solid #eee;
+            text-align: center;
+        }
+        .box>img{
+            width: 400px;
+            height: 270px;
+        }
+        p{
+            font-size: 25px;
+        }
+        .box>p>span{
+            color: red;
+            font-size: 30px;
+        }
+        a img{
+            width: 400px;
+            height: 100px;
+        }
+        a{
+            position: relative;
+            color: #000;
+            pointer-events:none;
+        }
+        a span{
+            position: absolute;
+            top: -45px;left: 60px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img id="img1" src="image/1.png" alt="">
+        <h2>兰蔻明眸大眼5件套装礼盒</h2>
+        <p>原价：1080.00 <span>活动价：998</span></p> 
+        <a id="a" href="#" ><span id="span"></span><img id="img2" src="image/4.jpg" alt=""></a>
+    </div>
+
+    <script>
+        var oSpan = document.getElementById('span');
+        var a = document.getElementById('a');
+        var oImg1 = document.getElementById('img1')
+        var oImg2 = document.getElementById('img2');
+        
+        setInterval(() => {
+            // 现在的时间戳
+            var now = new Date();
+            var star = now.getTime();
+            //结束的时间戳
+            var deadLine = '2019-8-16 12:00:00';
+            var end = Date.parse(deadLine);
+            //相差的时间
+            var offset = end - star;
+            //得到 天，小时，分钟，秒数
+            var day = Math.floor(offset / 1000 / 60 / 60 / 24);
+            var hour = f(Math.floor(offset / 1000 / 60 / 60 % 24));
+            var min = f(Math.floor(offset / 1000 / 60 % 60));
+            var second = f(Math.floor(offset / 1000 % 60));
+
+            var txt = ` ${day}天${hour}小时${min}分钟${second}秒 `
+
+            oSpan.innerHTML = txt;
+            //时间到，隐藏倒计时的文字，更改图片，a标签可以点击
+            if(offset <=0 ){
+                oSpan.innerHTML = '';
+                oImg1.src = 'image/2.png'
+                oImg2.src = 'image/3.jpg';
+                a.style.pointerEvents = 'all';  //让a标签可以点击
+            }
+
+        }, 1000);
+        //给单位数前面加个0
+        function f(num){
+            return  ('00'+num).slice(-2);
+        }
+            
+
+
+
+    </script>
+</body>
+</html>

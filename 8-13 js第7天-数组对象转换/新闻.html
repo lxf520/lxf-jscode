@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 800px;
+            height: 400px;
+            border: 2px solid black;
+            border-radius: 10px;
+            margin: 20px auto;
+        }
+
+        .box2 {
+            width: 800px;
+            margin: 10px auto;
+            height: 30px;
+
+        }
+
+        input {
+            width: 600px;
+            height: 30px;
+        }
+
+        button {
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h3>下面的由瓜瓜报道的新闻：</h3>
+        <ul></ul>
+    </div>
+    <div class="box2">
+        <input type="text">
+        <button>提交</button>
+    </div>
+
+    <script>
+        var oBox = document.getElementById("box");
+        var oUl = document.getElementsByTagName("ul")[0];
+        var oInput = document.getElementsByTagName("input")[0];
+        var oBtn = document.getElementsByTagName("button")[0];
+
+        var news = ["今天我起床的时候看到了星星！", "素月终于结束单身生活。", "今天雷雨交加。", "知名记者昨晚在金丰会所拍到了明杰先生。", "爆炸新闻，明杰宣布进军娱乐圈。"];
+
+         
+        renderView();
+        function renderView(){
+            oUl.innerHTML = news.map(function (ele,index){
+                return `<li><a href="#">${index + 1}. ${ele} </a></li> `;
+            }).join("");
+        }
+
+        oBtn.onclick = function(){
+            var inputs = oInput.value;
+            if(inputs == 0){
+                alert('请输入');
+                return
+            }
+            news.unshift(inputs);
+            // console.log(news);
+            news.length = 10;
+            renderView();
+            
+            
+        }
+
+
+
+
+
+
+
+
+
+
+
+        //  renderView();
+
+        // function renderView() {
+        //     oUl.innerHTML = news.map(function (ele, index) {
+        //         return `<li><a href="#">${index + 1}. ${ele}</a></li>`;
+        //     }).join("");
+        // }
+
+        // /* 处理添加新闻的任务 */
+        // var oBtn = document.getElementsByTagName("button")[0];
+        // var oInput = document.getElementsByTagName("input")[0];
+        // oBtn.onclick = function () {
+        //     /* 001-获取文本输入框的内容 */
+        //     var text = oInput.value;
+
+        //     /* 002-检查输入框是否有内容（容错性处理） */
+        //     if (text.length == 0) {
+        //         alert("请输入内容");
+        //         return;
+        //     }
+
+        //     /* 003-操作数组 */
+        //     news.unshift(text);
+        //     // news.pop();
+        //     news.length = 5;
+        //     console.log(news);
+
+        //     /* 004-根据数据更新界面 */
+        //     renderView();
+        // }
+    </script>
+</body>
+
+</html>

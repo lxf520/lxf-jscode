@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;margin: 0;
+        }
+        #box{
+            width: 1px;
+            position: relative;
+            height: 15px;
+            background-color: darkcyan;
+        }
+        #progress{
+            position: absolute;
+            left: 40%;
+            top: 15px;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="box"><span id="progress">100</span></div>
+
+    <script>
+        var oLoading = document.getElementById("box");
+        var oProgress = document.getElementById("progress");
+        var pageWidth = window.innerWidth;
+
+        var interval = setInterval(() => {
+            var width = oLoading.offsetWidth + 1;
+            console.log(width);
+            
+            if(width >= pageWidth){
+                // width = pageWidth;
+                clearInterval(interval);
+            }
+            oLoading.style.width = width + 'px';
+            oProgress.innerHTML = ((width/pageWidth)*100).toFixed(2) + '%';
+
+        }, 5);
+    </script>
+</body>
+</html>

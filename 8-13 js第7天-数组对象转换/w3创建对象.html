@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <!-- 创建一个对象，用于存储一个学生的信息，
+            该对象包含学号、身份证、年龄、性别、所学专业等属性信息，
+            同时该对象包含一个自我介绍的方法，用来输出该对象的所有信息。 -->
+    <script>
+        var object = {
+            ID : 123,
+            IDcard : 440552123456789,
+            age : 18,
+            sex : 'man',
+            fn  : function () {
+                return object;
+            }
+        }
+        console.log(object.fn());
+        
+    </script>
+</body>
+</html>

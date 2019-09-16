@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <marquee width="300" hight="400" bgcolor="red" behavior="scroll" direction="">
+
+        <span>文字</span>
+
+    </marquee>
+    <script>
+        var string = '我喜欢你好久了';
+        var arr = [];
+        for (var i = 0; i < string.length; i++) {
+            arr.push(string.charCodeAt(i));
+        }
+        console.log(arr);
+
+        var res = '';
+        for (var j = 0; j < arr.length; j++) {
+            res += String.fromCharCode(arr[j]);
+        }
+        console.log(res);
+    </script>
+</body>
+
+</html>

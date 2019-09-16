@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+
+    <script>
+        function f(){
+            var time = new Date();
+            var year = time.getFullYear();
+            var month = task(time.getMonth());
+            var date = task(time.getDate());
+            var hour = task(time.getHours());
+            var minutes = task(time.getMinutes());
+            var second = task(time.getSeconds());
+            return `${year}年${month}月${date}日${hour}时${minutes}分${second}秒`
+        }
+
+        var oDiv= document.getElementsByTagName("div")[0];
+        oDiv.innerHTML = f();
+
+        setInterval(()=>oDiv.innerHTML = f(),1000);
+
+        function task(num){
+            return ('00'+num).slice(-2);
+        }
+    </script>
+</body>
+</html>

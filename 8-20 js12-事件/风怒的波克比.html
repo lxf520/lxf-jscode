@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        img {
+            width: 130px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+        }
+
+        .right {
+            transform: rotate(90deg);
+        }
+
+        .bottom {
+            transform: rotate(180deg);
+        }
+
+        .left {
+            transform: rotate(-90deg);
+        }
+
+        .top {
+            transform: rotate(0deg);
+        }
+    </style>
+</head>
+
+<body>
+    <img src="img/3.jpg" alt="">
+
+    <script>
+        var oImg = document.getElementsByTagName('img')[0];
+        var count = 20;
+        window.onkeydown = function (event) {
+            var e = event || window.event;
+            var code = e.which || e.keyCode;
+            console.log(code);
+
+            switch (code) {
+                /* 37 左 */
+                /* 38 上 */
+                /* 39 右 */
+                /* 40 下 */
+                case 37:
+                    oImg.style.left = oImg.offsetLeft - count + 'px';
+                    oImg.className = 'left';
+                    break;
+                case 38:
+                    oImg.style.top = oImg.offsetTop - count + 'px';
+                    oImg.className = 'top';
+                    break;
+                case 39:
+                    oImg.style.left = oImg.offsetLeft + count + 'px';
+                    oImg.className = 'right';
+                    break;
+                case 40:
+                    oImg.style.top = oImg.offsetTop + count + 'px';
+                    oImg.className = 'bottom';
+                    break;
+                default:
+                    break;
+            }
+
+            if (oImg.offsetLeft >= window.innerWidth) {
+                oImg.style.left = -oImg.offsetWidth + 'px';
+            }
+            else if (oImg.offsetLeft <= -oImg.offsetWidth) {
+                oImg.style.left = window.innerWidth + 'px';
+            }
+
+            else if (oImg.offsetTop >= window.innerHeight) {
+                oImg.style.top = -oImg.offsetHeight + 'px';
+            }
+            else if (oImg.offsetTop <= -oImg.offsetHeight) {
+                oImg.style.top = window.innerHeight + 'px';
+            }
+        }
+    </script>
+</body>
+
+</html>

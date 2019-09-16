@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var arr = [11, 34, 23, 45, 11, 23];
+
+        function f() {
+            var len = arguments.length;
+            var res = [];
+            for (var i = 0; i < len; i++) {
+                for (var j = i + 1; j < len; j++) {
+                    if (arguments[i] === arguments[j]) {
+                        j = ++i;
+                    }
+                }
+                res.push(arguments[i]);
+            }
+            console.log(res);
+        }
+        f(11, 45, 11, 23);
+    </script>
+    <script>
+        var arr = [1, 2, 4, 5, 2, 2, 1, 4];
+
+        function unique2(array) {
+            //结果数组
+            var newArr = [array[0]];
+            //遍历当前的数组
+            for (var i = 1; i < array.length; i++) {
+                //如果当前数组第i项第一次出现的位置不是i，那么代表重复，否则push进newArr数组里面
+                if (array.indexOf(array[i]) == i) {
+                    newArr.push(array[i]);
+                }
+            }
+            return newArr;
+        }
+        var newArr = unique2(arr);
+        console.log(newArr)
+    </script>
+</body>
+
+</html>

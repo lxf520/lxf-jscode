@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;
+        }
+        .box{
+            margin: 100px auto;
+            border: 2px dashed black;
+            width: 300px;
+            height: 400px;
+            position: relative;
+        }
+        h1{
+            line-height: 100px;
+            text-align: center;
+            color: red;
+        }
+        input{
+            text-align: center;
+            margin-left: 80px;
+            line-height: 100px;
+            font-size: 70px;
+            width: 160px;
+        }
+        button{
+            position: absolute;
+            top: 200px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            line-height: 20px;
+            text-align: center;
+            border: 2px solid red;
+            cursor: pointer;
+        }
+        #jia{
+            right: 10px;
+        }
+        #jian{
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>苹果X:</p>
+        <h1 id="price">$500</h1>
+        <input type="text" id="num" value="1">
+        <button id="jia">+</button>
+        <button id="jian">-</button>
+    </div>
+
+
+    <script>
+        var price = document.getElementById("price");
+            num = document.getElementById("num");
+        var jia = document.getElementById("jia");
+            jian = document.getElementById("jian");
+        var n = document.getElementById("num").value;
+
+        jia.onclick = function(){
+            n++;
+            document.getElementById("num").value = n;
+            price.innerHTML = "$"+ n*500;
+        }
+        jian.onclick = function(){
+            if(n>0){
+                n--;
+                document.getElementById("num").value = n;
+                price.innerHTML = "$"+n*50;
+            }else{
+                n=0;
+            }
+            
+
+        }
+    
+    </script>
+</body>
+</html>

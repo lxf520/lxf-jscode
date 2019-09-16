@@ -1,0 +1,45 @@
+* {
+    list-style: none
+}
+
+.tabItem ul {
+    /* width: 400px; */
+    height: 44px;
+    line-height: 44px;
+    padding: 0;
+    margin: 0;
+}
+
+.tabItem ul li {
+    user-select: none;
+    width: 100px;
+    height: 44px;
+    border: 1px dashed #ccc;
+    border-left: none;
+    border-bottom: none;
+    text-align: center;
+    float: left;
+}
+
+.tabItem ul li:nth-child(1) {
+    border-left: 1px dashed #ccc;
+
+}
+
+.active {
+    background: #195;
+    color: #fff;
+}
+
+.tab-content {
+    border: 1px solid #ccc;
+    width: 403px;
+    height: 300px;
+    line-height: 300px;
+    text-align: center;
+    display: none
+}
+
+.current {
+    display: block
+}

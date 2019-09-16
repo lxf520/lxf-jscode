@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="text" placeholder="字符串">
+    <input type="text" id="word" placeholder="字">
+    <button>确定</button>
+    <span></span>
+    <script>
+        var text = document.getElementById("text");
+        var word = document.getElementById("word");
+        var btn = document.getElementsByTagName("button")[0];
+        var oSpan = document.getElementsByTagName("span")[0];
+
+        btn.onclick = function () {
+            var txt = text.value;
+            var w = word.value;
+            f(txt,w);
+
+        }
+        //封装函数，该函数用于检查字符串中是否存在指定的字符，如果存在那么返回true,否则返回false。
+        function f(text,w){
+            for(var i=0 ; i<text.length; i++){
+                if(text.charAt(i) == w){
+                    console.log("true");
+                    oSpan.innerHTML = "true";
+                    return true;
+                }else{
+                    oSpan.innerHTML = "false";
+
+                }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

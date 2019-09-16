@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 为对象扩展一个转换为数组的方法，要求所有的对象都能够调用该方法。 -->
+    <script>
+        var abc = {
+            name : 'zs',
+            age  : 2,
+        }
+        Object.prototype.o2s = function(){
+            var arr =[];
+            var o = this;
+            for(var k in o){
+                arr.push(`${k}=${o[k]}`);  //!!!!!!!!!!
+            }
+            var arr1 = arr.slice(0,arr.length-1);
+            return arr1.join('&');
+            
+        }
+        console.log(abc.o2s());
+         console.log(abc);
+         
+        
+        
+    </script>
+</body>
+
+</html>

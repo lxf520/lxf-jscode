@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var o = {
+            name:"啊瓜",
+            age:"18",
+            address:"海大",
+            sum:function(){
+                console.log("123");
+            }
+        }
+        console.log(o);
+
+        /* 点语法 */
+        console.log(`姓名:${o.name}`);  //增加
+        o.ID = '55555555555555';        //插入
+        console.log(o);
+        o.address = "上海";             //改
+        console.log(o.address);
+
+        delete o.age;
+        console.log(o);
+        
+        /* []语法 */
+        var hhh = {
+            name:"啊瓜",
+            age:"18",
+            address:"海大",
+            sum:function(){
+                console.log("123");
+            }
+        }
+        console.log(`名字${hhh.name}`);
+        hhh["id"] =666666;
+        hhh["age"] = 28;
+        console.log(hhh); 
+
+        delete hhh["address"];
+
+    </script>
+</body>
+</html>

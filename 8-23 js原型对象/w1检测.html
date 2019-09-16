@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //     [1] 封装函数，该函数接受一个属性和对象参数，检查该属性是否存在且只存在于原型对象上。
+        // 提示：结合hasOwnProperty和in关键字来实现。
+        function f(shuxing, shili) {
+            return (shuxing in shili && !shili.hasOwnProperty(shuxing));
+        }
+        console.log(f('xx', p));
+    </script>
+</body>
+
+</html>

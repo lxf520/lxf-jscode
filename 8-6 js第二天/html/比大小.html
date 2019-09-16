@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    数字1：<input type="text" id="n1">
+    数字2：<input type="text" id="n2"><br>
+    <button>判断</button>
+    谁比较大：<input type="text" id="n3">
+    <span></span>
+
+        <script>
+            var btn = document.getElementsByTagName("button")[0];
+            var n1 = document.getElementById("n1");
+                n2 = document.getElementById("n2");
+                n3 = document.getElementById("n3");
+            btn.onclick = function () {
+                var num1 = n1.value;
+                var num2 = n2.value;
+
+                if(num1&&num2){
+                    n3.value = num1>num2 ? num1 : num2;
+                }else{
+                    alert("请输入数字") ;
+                }
+            }
+        </script>
+</body>
+</html>

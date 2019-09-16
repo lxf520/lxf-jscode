@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 1200px;
+            height: 650px;
+            margin: 50px auto;
+            /* border: 1px solid #ccc; */
+        }
+
+        .tab {
+            height: 50px;
+            border-bottom: 4px solid #f21c1c;
+
+        }
+
+        .tab li {
+            width: 116px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        li {
+            float: left;
+        }
+
+        .tab .active {
+            background: #f21c1c;
+            color: #fff;
+            border-right: none;
+        }
+
+        .list li {
+            text-align: center;
+            width: 220px;
+            margin: 10px 18px 5px 0;
+            height: 270px;
+            /* background-color: #999; */
+        }
+
+        .list li:hover {
+            border: 1px solid #ccc;
+            box-shadow: 1px 1px 1px 1px rgba(255, 255, 221, .6);
+        }
+
+        .list>div {
+            display: none;
+        }
+
+        .list .check {
+            display: block;
+            background-color: #ddd;
+        }
+
+        img {
+            width: 140px;
+            height: 140px;
+        }
+
+        h4 {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="box">
+        <ul class="tab">
+            <li class="active">苹果专区</li>
+            <li>安卓专区</li>
+            <li>新品上新</li>
+        </ul>
+        <ul class="list">
+            <div class="check"></div>
+            <div></div>
+            <div></div>
+        </ul>
+    </div> -->
+    <script>
+        var data0 = [
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/2016102814312221.jpg",
+                "price": "￥12999¥ 16899",
+                "name": "Apple MacBook Pro 15寸 2017版"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20190618233257380.jpg",
+                "price": "￥4299¥ 6599",
+                "name": "Apple iPhone X"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20141023160336767.jpg",
+                "price": "￥999¥ 2699",
+                "name": "Apple iPad Air 2"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20170913035340180.jpg",
+                "price": "￥2350¥ 3399",
+                "name": "Apple iPhone 8（A1863)"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20180913060732958.jpg",
+                "price": "￥6399¥ 10099",
+                "name": "Apple iPhone XS"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20190520221525897.jpg",
+                "price": "￥4299¥ 6599",
+                "name": "Apple iPhone X"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20160322132314212.jpg",
+                "price": "￥699¥ 1999",
+                "name": "Apple iPhone 6"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20160322132314212.jpg",
+                "price": "￥899¥ 4299",
+                "name": "Apple iPhone 6"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20160322132314212.jpg",
+                "price": "￥699¥ 1999",
+                "name": "Apple iPhone 6"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20190520221525897.jpg",
+                "price": "￥3999¥ 6599",
+                "name": "Apple iPhone X"
+            }
+        ];
+        var data1 = [{
+                "src": "https://img2.ch999img.com/pic/product/440x440/20190618234800699.jpg",
+                "price": "￥2299",
+                "name": "小米9"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/2018082914393558.jpg",
+                "price": "￥1750",
+                "name": "OPPO R17"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20180327162620529.jpg",
+                "price": "￥1299",
+                "name": "小米MIX2S"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20171226094948825.jpg",
+                "price": "￥699",
+                "name": "荣耀9青春版"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/2019061823444384.jpg",
+                "price": "￥799",
+                "name": "华为 畅享9"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/2019061823444384.jpg",
+                "price": "￥750",
+                "name": "华为 畅享9"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/2018080816215471.jpg",
+                "price": "￥1699",
+                "name": "魅族 16th Plus"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/2018080816215471.jpg",
+                "price": "￥1599",
+                "name": "魅族 16th Plus"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20180606161839482.jpg",
+                "price": "￥650",
+                "name": "华为 荣耀9i"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20190618233449900.jpg",
+                "price": "￥3999",
+                "name": "华为 P30 Pro"
+            }
+        ]
+        var data2 = [{
+                "src": "https://img2.ch999img.com/pic/product/440x440/20160908093630265.jpg",
+                "price": "￥899",
+                "name": "Apple iPhone 6s"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20190520221525897.jpg",
+                "price": "￥3999",
+                "name": "Apple iPhone X"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20170421144142175.jpg",
+                "price": "￥2199",
+                "name": "Apple iPhone 7 Plus"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20170421144123524.jpg",
+                "price": "￥2399",
+                "name": "Apple iPhone 7 Plus"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20150910052254135.jpg",
+                "price": "￥1299",
+                "name": "Apple iPhone 6s"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20180402163209165.jpg",
+                "price": "￥799",
+                "name": "Apple iPhone 6"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20170421142609609.jpg",
+                "price": "￥1399",
+                "name": "Apple iPhone 7"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20190618234800699.jpg",
+                "price": "￥2299",
+                "name": "小米9"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/20180913062847599.jpg",
+                "price": "￥4399",
+                "name": "Apple iPhone XR"
+            },
+            {
+                "src": "https://img2.ch999img.com/pic/product/440x440/2018082914393558.jpg",
+                "price": "￥1750",
+                "name": "OPPO R17"
+            }
+        ]
+
+
+        function Tab() {};
+
+        Tab.prototype = {
+            constructor: Tab,
+            init: function () {
+
+                this.oList = document.getElementsByClassName('list')[0];
+                this.oDiv = this.oList.children;
+                this.oLis = document.getElementsByTagName('li');
+
+                this.createEle();
+                this.addEvent();
+            },
+            createEle() {
+                var oDiv0 =  this.oDiv[0].innerHTML = data0.map(function (ele, index) {
+                    return `<li>
+                <img src= ${ele.src} alt="">
+                <h4>${ele.name}</h4>
+                <div class="price">${ele.price}</div>
+            </li>`
+                }).join('');
+                var oDiv1 = this.oDiv[1].innerHTML = data1.map(function (ele, index) {
+                    return `<li>
+                <img src= ${ele.src} alt="">
+                <h4>${ele.name}</h4>
+                <div class="price">${ele.price}</div>
+            </li>`
+                }).join('');
+                var oDiv2 = this.oDiv[2].innerHTML = data2.map(function (ele, index) {
+                    return `<li>
+                <img src= ${ele.src} alt="">
+                <h4>${ele.name}</h4>
+                <div class="price">${ele.price}</div>
+            </li>`
+                }).join('');
+
+                var oBox = document.createElement('div');
+
+                oBox.innerHTML = `
+                                <ul class="tab">
+                                    <li class="active">苹果专区</li>
+                                    <li>安卓专区</li>
+                                    <li>新品上新</li>
+                                </ul>
+                                <ul class="list">
+                                    <div class="check">${oDiv0}</div>
+                                    <div>${oDiv1}</div>
+                                    <div>${oDiv2}</div>
+                                </ul>`
+                oBox.className = "box";
+                return oBox;
+            },
+            addEvent: function () {
+                for (var i = 0; i < 3; i++) {
+                    this.oLis[i].index = i;
+                    var self = this;
+
+                    this.oLis[i].onclick = function () {
+                        self.toggleClassName(this.index);
+                    }
+                }
+            },
+            toggleClassName(i) {
+                for (var k = 0; k < 3; k++) {
+                    this.oLis[k].className = " ";
+                    this.oDiv[k].className = " ";
+                }
+
+                this.oLis[i].className = 'active';
+                this.oDiv[i].className = 'check';
+            }
+        }
+
+        var tab1 = new Tab();
+        tab1.init();
+    </script>
+
+
+</body>
+
+</html>

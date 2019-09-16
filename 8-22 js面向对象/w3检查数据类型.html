@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+        <!-- 封装一个检查数据类型得工具对象，要求该工具对象能够以下面的方式来使用。
+        检查是否为数组：$.isArray(o)  是则返回true,否则返回false
+        检查是否为函数：$.isFunction(o)
+        检查是否为字符串：$.isString(o)
+        检查是否为数字: $.isNumber(o)
+        检查是否为布尔值：$.isBoolean(o)
+        检查是否为元素节点：$.isElementNode(o)
+        检查是否为对象(普通)：$.isObject(o) -->
+    <div id="div"></div>
+    <script>
+        var oDiv = document.getElementById('div');
+
+        function F(){};
+
+        F.prototype = {
+            constructor : F,
+            isArray: function (str) {
+               return  str instanceof Array;
+            },
+            isFunction: function(str){
+                var flag = false;
+                if(typeof(str) == 'function'){
+                    flag = true;
+                }
+                console.log(flag);
+                return flag;
+            },
+            isString : function(str){
+                var flag = false;
+                if(typeof(str) == 'string'){
+                    flag = true;
+                }
+                console.log(flag);
+                return flag;
+            },
+            isNumber : function(str){
+                var flag = false;
+                if(typeof(str) == 'number'){
+                    flag = true;
+                }
+                console.log(flag);
+                return flag;
+            },
+            isBoolean : function (str) {
+                var flag = false;
+                if(typeof(str) == 'boolean'){
+                    flag = true;
+                }
+                console.log(flag);
+                return flag;
+            },
+            isElementNode : function (str) {
+                var flag = false;
+                if(str.nodeType == 1){
+                    flag = true;
+                }
+                console.log(flag);
+                return flag;
+            },
+            isObject : function (str) {
+                var flag = false;
+                if(typeof str == 'Object'){
+                    flag = true;
+                }
+                console.log(flag);
+                return flag;
+            }
+        }
+        var $ = new F();
+
+        // var string = '123';
+        // $.isElementNode(oDiv);
+        // console.log( $.isBoolean( 1 ) );
+        console.log($);
+        
+         
+
+
+
+    </script>
+</body>
+
+</html>

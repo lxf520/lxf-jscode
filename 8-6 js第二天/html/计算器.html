@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <input id="i1" type="text" name="" placeholder="">
+    <select name="" id="type">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input id="i2" type="text" value="" placeholder="">
+    <button id="btn" type="">=</button>
+    <input id="jieguo" type="text" />
+
+    <script type="text/javascript">
+        var btn = document.getElementById("btn");
+             i1 = document.getElementById("i1");
+             i2 = document.getElementById("i2");
+             n3 = document.getElementById("jieguo");
+             type = document.getElementById("type");
+         
+        btn.onclick = function () {
+            var n1 = parseInt(i1.value);
+            var n2 = parseInt(i2.value);
+
+            var res = 0;  //初始化
+            // if(type.value == "+"){
+            //     res = n1 + n2;
+            // }
+            // if(type.value == "-"){
+            //     res = n1 -n2;
+            // }
+            // if(type.value == "*"){
+            //     res = n1 * n2;
+            // }
+            // if(type.value == "/"){
+            //     res = n1 / n2;
+            // }
+            // else if(type.value == "%"){
+            //     res = n1 % n2;
+            // }
+
+            switch (type.value) {
+                case "+":
+                    res = n1 + n2;
+                    break;
+                case "-":
+                    res = n1 - n2;
+                    break;
+                case "*":
+                    res = n1 * n2;
+                    break;
+                case "/":
+                    res = n1 / n2;
+                    break;
+
+                case "%":
+                    res = n1 % n2;
+                    break;
+            }
+           n3.value = res;
+        }
+    </script>
+</body>
+
+</html>

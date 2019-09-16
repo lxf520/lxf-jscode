@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <input type="text">
+        <input type="text">
+        <button>最大公约数</button>
+        <span></span>
+        <script>
+            var n1 = document.getElementsByTagName("input")[0];
+            var n2 = document.getElementsByTagName("input")[1];
+            var btn = document.getElementsByTagName("button")[0];
+            btn.onclick = function(){
+                var x = n1.value;
+                var y = n2.value;
+    
+                var num = x>y? y : x;
+                for(var i=num ;  ; i++){
+                    if(i%x==0 && i%y==0){
+                        console.log(i);
+                        var p = document.createElement("p");
+                        p.innerHTML = `最大公约数：${i}`;
+                        document.body.appendChild(p);
+                        return;
+                    }
+                }
+                
+            }
+        </script>
+</body>
+</html>

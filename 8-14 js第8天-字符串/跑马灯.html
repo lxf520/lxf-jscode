@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #txt{
+            width: 800px;
+            height: 300px;
+            font-size: 60px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <button>神器</button>
+    <div id="txt">这是一个晴空万里的夏天!</div>
+
+    <script>
+        var oDiv = document.getElementById("txt");
+        var oBtn = document.getElementsByTagName("button")[0];
+
+        oBtn.onclick = function(){
+            setInterval(function(){
+                var val = oDiv.innerHTML;
+                var star = val.slice(0,1);
+                var end = val.slice(1);
+                var str = end + star;
+                oDiv.innerHTML = str;
+            },300)
+        }
+    </script>
+</body>
+</html>

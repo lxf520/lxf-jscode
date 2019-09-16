@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .items{
+            float: left;
+            margin: 5px;
+            background-color: #195;
+            width: 100px;
+            height: 30px;
+            color: white;
+            line-height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <button>点击抽奖</button>
+    <div id="box"></div>
+    <script>
+        var box = document.getElementById("box");
+        var btn = document.getElementsByTagName("button")[0];
+        var names = ["陈子杰", "张永健", "李纪超", "朱子刊", "张明敏", "何广盈", "邓浩鹏", "胡观保", "孙雨青", "徐立平", "刘昊", "游冰珊", "萧景铭", "卢琪锋","李明杰", "郭昀通", "邓华盛", "万小虎", "孟祥", "谭志鹏", "王旭辉", "周灿颖", "卢富强", "王权", "林永祥", "刘健", "关建豪", "陈文斌", "廖奕浩","黄延锋","张声涌", "麦效承", "林晓锋", "何欢", "白海明", "李杰", "翁铭锴", "梁爽", "苏积观", "杨增繁", "蔡伟超", "严慧君", "曾玉姣"
+        ];
+
+        names.forEach(function(value){
+            var oDiv = document.createElement("div");   //创建标签
+            oDiv.innerHTML = value;                     //插入数组内容
+            oDiv.className = "items";                   //给标签添加类名
+            box.appendChild(oDiv);                      //添加到页面中
+        })
+        //获取随机数
+        function getRandom(max,min){
+            return parseInt(Math.random() * (max-min+1))+min
+        }
+
+        btn.onclick = function(){
+            var num = getRandom(names.length-1,0);
+            var items = document.getElementsByClassName("items");
+            items[num].style.background = "red";
+            console.log(names[num]);
+        }
+    </script>
+</body>
+
+</html>

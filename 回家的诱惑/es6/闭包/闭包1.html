@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 在程序语言中，所谓闭包，是指语法域位于某个特定的区域，具有持续参照(读写)位于该区域内自身范围之外的
+        执行域上的非持久型变量值能力的段落。这些外部执行域的非持久型变量神奇地保留他们在闭包最初定义(或创建)时的值。 -->
+    <!-- <script>
+        function f() {
+            var o = {
+                name: 'zs'
+            };
+            return function () {
+                return o
+            };
+            // return o
+        }
+        // console.log( f()===f() );
+        var foo = f();
+        console.log(foo() === foo());
+    </script> -->
+    <script>
+        function fun(n, o) {
+            // console.log(n);
+
+            console.log('o的值:' + o);
+            console.log('------');
+
+            return {
+                fun: function (m) {
+                    return fun(m, n)
+                }
+            }
+        }
+                // var a = fun(0);
+                // a.fun(1);
+                // a.fun(2);
+                // a.fun(3);
+
+        // console.log('******************************************************************');
+
+                // var b = fun(0).fun(1).fun(2).fun(3);
+                // console.log(b);
+
+        console.log('******************************************************************');
+        var c = fun(0).fun(1);
+
+        c.fun(2);
+        c.fun(3);
+    </script>
+</body>
+
+</html>

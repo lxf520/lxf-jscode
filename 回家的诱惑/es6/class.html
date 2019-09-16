@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 构造函数以前的写法
+        let Car = function(color,dog){
+            this.color = color;
+            this.dog = dog;
+        };
+        Car.prototype = {
+            constructor:Car,
+            showAge : function(){
+                console.log('aaa');
+            }
+        }
+        let car1 = new Car('blue','erha');
+        car1.showAge();
+        console.dir(car1);
+
+        class Person{
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            showAge(){
+                console.log('------');
+            }
+            showName(){
+                console.log('*******');
+            }
+            // 添加静态成员
+            static showxx(){
+                console.log('+++++');
+            }
+        }
+
+        console.dir(Person);
+        let p1 = new Person;
+        p1.showAge();
+    </script>
+</body>
+</html>

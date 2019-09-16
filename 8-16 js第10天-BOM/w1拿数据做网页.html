@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;list-style: none;}
+        .box{
+            width: 1300px;
+            margin: 20px auto;
+        }
+        li{
+            border: 1px solid black;
+            width: 240px;
+            height: 360px;
+            margin: 5px;
+            float: left;
+        }
+        img{
+            height: 240px;
+            width: 240px;
+        }
+        h2{
+            color: red;
+        }
+        p{
+            font-size: 12px;
+        }
+        span{
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+        <!-- 根据数据(对象数组)来动态的生成商品列表，当点击指定商品的时候跳转到详情页并展示对应的数据。 -->
+    <div class="box">
+        <ul>
+            
+        </ul>
+    </div>    
+
+    <script>
+        var data = [
+            {
+                "name": "泰国进口 金枕头榴莲 1.5-2kg 1个装 新鲜水果",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/_tM9uJnBBVwmg3BalIY1Bw.jpg_400w_400h_4e",
+                "price": "¥98.00",
+                "dis": "2500+评价"
+            },
+            {
+                "name": "【誉福园】山西运城 黄土高原脆甜红桃子净重5斤纯甜",
+                "src": "https://imgservice5.suning.cn/uimg1/b2c/image/-8exiwCyXV7WeKzesJyhPg.jpg_400w_400h_4e",
+                "price": "¥12.90",
+                "dis": "200+评价"
+            },
+            {
+                "name": "阿榴哥 泰国金枕头冷冻榴莲肉 300G*1盒装",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/SelZIlPf0yCgUtVftrDVCg.jpg_400w_400h_4e",
+                "price": "¥59.90",
+                "dis": "28万+评价"
+            },
+            {
+                "name": "【两件起售】田阳馆 凯特芒果小果2.5斤（单果约150-300g）新鲜水果原产地现摘现发 华南",
+                "src": "https://imgservice5.suning.cn/uimg1/b2c/image/UKyArQP4j-i4z456WPGgrA.jpg_400w_400h_4e",
+                "price": "¥12.80",
+                "dis": "3000+评价"
+            },
+            {
+                "name": "【精品苹果】烟台红富士苹果12个装 果径70-80mm 烟台苹果 新鲜水果 苏宁苹果 水果生鲜",
+                "src": "https://imgservice1.suning.cn/uimg1/b2c/image/_KLYvz3ReQmdirwr0Bqv1g.jpg_400w_400h_4e",
+                "price": "¥47.80",
+                "dis": "1.2万+评价"
+            },
+            {
+                "name": "现摘百香果新鲜水果5斤装约45-60个果（数量仅供参考以重量为准）净果4.6-5斤",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/e5prgEww0JB_LBWCmNqVJg.jpg_400w_400h_4e",
+                "price": "¥29.90",
+                "dis": "500+评价"
+            },
+            {
+                "name": "星优选 沂蒙山黄金水蜜桃5斤 黄桃黄毛桃新鲜水果 现摘桃子生鲜",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/wQR2hECQVXG3GpqvNsOwww.jpg_400w_400h_4e",
+                "price": "¥29.90",
+                "dis": "200+评价"
+            },
+            {
+                "name": "苗家十八洞 秭归夏橙2.5斤装 单果果径55-60mm 橙味十足 【偶数发货】",
+                "src": "https://imgservice5.suning.cn/uimg1/b2c/image/hjV3Yg_IQYZBbXT4dHILsQ.jpg_400w_400h_4e",
+                "price": "¥10.80",
+                "dis": "1300+评价"
+            },
+            {
+                "name": "甘肃静宁苹果 4个装 单果重量约180-210g新鲜水果",
+                "src": "https://imgservice1.suning.cn/uimg1/b2c/image/l8t0PWe66UuH2qIb-d8ytA.jpg_400w_400h_4e",
+                "price": "¥25.80",
+                "dis": "1100+评价"
+            },
+            {
+                "name": "【中华特色】 大荔馆 陕西 零点先到家冬枣新鲜水果应季枣子大枣孕妇吃鲜枣大果单果18-22克净重500克",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/Pt5bnbcmH2yWdcqI2D3rZg.jpg_400w_400h_4e",
+                "price": "¥19.90",
+                "dis": "200+评价"
+            },
+            {
+                "name": "【中华特色】 大荔馆 陕西 零点先到家冬枣新鲜水果应季枣子大枣孕妇吃鲜枣单果14-18克左右净重2斤",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/aK-QuZChS7esA7ff0bsB7w.jpg_400w_400h_4e",
+                "price": "¥29.90",
+                "dis": "400+评价"
+            },
+            {
+                "name": "埃及进口脐橙榨汁鲜橙 1.5kg装 新鲜水果",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/lLtkOGqu1T5_MJCQbgLyCA.jpg_400w_400h_4e",
+                "price": "¥19.50",
+                "dis": "1300+评价"
+            },
+            {
+                "name": "（买5斤送5斤）安徽砀山黄金蜜锦绣黄桃净重10斤桃子新鲜当季水果蜜桃脆毛桃",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/dMd25J3LU5uCCtUHFzERJQ.jpg_400w_400h_4e",
+                "price": "¥39.90",
+                "dis": "100+评价"
+            },
+            {
+                "name": "Zespri佳沛 新西兰阳光金奇异果 22-25个原箱（礼盒装） 单果重约130-170g",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/wTk7i2ofTaS1uJTTNEfqKg.png_400w_400h_4e",
+                "price": "¥238.00",
+                "dis": "6700+评价"
+            },
+            {
+                "name": "【两件包邮】福建土楼红美人香蕉2.5斤装 新鲜水果红美人香蕉芭蕉【催熟妙招见详情】【偶数发货】",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/MCwiF_0AXXCuRBrdFjM1sQ.jpg_400w_400h_4e",
+                "price": "¥11.80",
+                "dis": "100+评价"
+            },
+            {
+                "name": "广西小台农芒果5斤单果50-100g 新鲜水果",
+                "src": "https://imgservice1.suning.cn/uimg1/b2c/image/-ieRtgHk0EifH42JreLKnA.jpg_400w_400h_4e",
+                "price": "¥26.80",
+                "dis": "100+评价"
+            },
+            {
+                "name": "百宝源皇冠梨5斤 8-9个左右单果重200-250g左右 脆甜多汁 光滑细腻",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/IfJMb7hkzvbF2aAqP8J2Tw.jpg_400w_400h_4e",
+                "price": "¥26.90",
+                "dis": "300+评价"
+            },
+            {
+                "name": "湖北秭归夏橙 5斤 单果约65mm 橙子 脐橙 新鲜水果 生鲜水果 陈小四水果 国产 其他",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/PIr28_TA4yW4ucovyO7rCw.jpg_400w_400h_4e",
+                "price": "¥23.80",
+                "dis": "2000+评价"
+            },
+            {
+                "name": "陈小四水果 湖北秭归夏橙 2.5斤 单果约55mm左右 小果 橙子 新鲜水果 其他",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/PCle2DSv7nHnFUTnIyiDwQ.jpg_400w_400h_4e",
+                "price": "¥8.80",
+                "dis": "100+评价"
+            },
+            {
+                "name": "【天府生鲜】西沛国产苹果 陕西嘎啦苹果 5斤16个左右 香甜可口 宝宝孕妇辅食 新鲜采摘 现发",
+                "src": "https://imgservice5.suning.cn/uimg1/b2c/image/c_F0ixCvNCRAFaJQMXIUKQ.jpg_400w_400h_4e",
+                "price": "¥22.80",
+                "dis": "100+评价"
+            },
+            {
+                "name": "【精品苹果】新鲜烟台苹果6个装 果径70-80mm 红富士苹果新鲜水果 苏宁特色生鲜 偶数发货",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/Ru7ioE-Rk1LmY7_m-89vaA.jpg_400w_400h_4e",
+                "price": "¥48.80",
+                "dis": "2800+评价"
+            },
+            {
+                "name": "【天府生鲜】西沛国产 四川蒲江红心猕猴桃中果5枚装70-90g中果 猕猴桃奇异果 西南水果",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/atmosphere/qr3NPQv6qa1WYPO5Zm_tRA.jpg_400w_400h_4e",
+                "price": "¥29.90",
+                "dis": "100+评价"
+            },
+            {
+                "name": "Zespri佳沛 新西兰阳光金奇异果 6个装 经典36号果单果重约90-100g 新鲜水果",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/0N_gfik_sFEH2uD2_sfrFQ.png_400w_400h_4e",
+                "price": "¥39.80",
+                "dis": "1.1万+评价"
+            },
+            {
+                "name": "星优选 陕西大荔新鲜冬枣精品大果2斤 脆甜大枣子 现摘新鲜水果",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/jX5UL-KnwyAFzTTir4p2pA.jpg_400w_400h_4e",
+                "price": "¥29.90",
+                "dis": "9评价"
+            },
+            {
+                "name": "【中华特色】湘西馆 秭归夏橙2.5斤装 单果径55-60mm 新鲜多汁 偶数发货 华中",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/k_tiuyH6Ke2QZUIQkOpAwg.jpg_400w_400h_4e",
+                "price": "¥10.80",
+                "dis": "400+评价"
+            },
+            {
+                "name": "山东苹果 简装2.5kg装 果径70-80mm 新鲜水果",
+                "src": "https://imgservice5.suning.cn/uimg1/b2c/image/cb4jaLQRCBvTKlnDbFQvhQ.jpg_400w_400h_4e",
+                "price": "¥69.80",
+                "dis": "7300+评价"
+            },
+            {
+                "name": "百香果 5斤 单果50g左右  冷藏国产浆果类/核果类新鲜水果 生鲜水果 陈小四水果 其他",
+                "src": "https://imgservice1.suning.cn/uimg1/b2c/image/VyAgx32xu0yeQk0T1lXHDg.jpg_400w_400h_4e",
+                "price": "¥24.80",
+                "dis": "300+评价"
+            },
+            {
+                "name": "新鲜安岳黄柠檬1斤装 4个左右 黄柠檬 当季新鲜水果生鲜",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/omVm4dN1604eY5EUTk_pGQ.jpg_400w_400h_4e",
+                "price": "¥9.90",
+                "dis": "1800+评价"
+            },
+            {
+                "name": "黑布林李子1斤装 新鲜水果 酸甜李子",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/FmYiTI2j6MsQV45wNszZcg.jpg_400w_400h_4e",
+                "price": "¥9.90",
+                "dis": "20+评价"
+            },
+            {
+                "name": "【中华特色】安岳馆 雷蒙四川安岳水果柠檬1斤装 单果60-210g 西南",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/c2ybVIRznuly8AXTw9eaTg==.jpg_400w_400h_4e",
+                "price": "¥19.90",
+                "dis": "1.0万+评价"
+            },
+            {
+                "name": "泰国进口 金枕头榴莲 2kg以上 1个装 新鲜水果",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/pQsYxNGyOYmo5GwvwHm_cQ.jpg_400w_400h_4e",
+                "price": "¥118.00",
+                "dis": "5.5万+评价"
+            },
+            {
+                "name": "新鲜野生仙人掌果2斤装 青皮仙人果 仙桃 新鲜热带水果",
+                "src": "https://imgservice5.suning.cn/uimg1/b2c/image/qMv4HBAWSC6aasPK9DSLIw.jpg_400w_400h_4e",
+                "price": "¥37.80",
+                "dis": "100+评价"
+            },
+            {
+                "name": "【买7斤送3斤】安徽砀山皇冠梨 新鲜水果 共发带箱10斤 青皮梨子 净重8.5斤左右",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/sEx3H8smoSRADQcY_3oP9w.jpg_400w_400h_4e",
+                "price": "¥38.80",
+                "dis": "30+评价"
+            },
+            {
+                "name": "阿榴哥 泰国金枕头冷冻榴莲肉 300G*3",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/2Pp6U_WA4OJRKK5qYgO3bQ.jpg_400w_400h_4e",
+                "price": "¥179.70",
+                "dis": "28万+评价"
+            },
+            {
+                "name": "泰国进口椰青 椰子9个装 单果约750g 配开椰器和吸管 新鲜水果",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/6--0bA_lZsqnVneSF_5N5w.jpg_400w_400h_4e",
+                "price": "¥118.00",
+                "dis": "1.3万+评价"
+            },
+            {
+                "name": "【中华特色】延长馆 耕基 早酥梨2.5kg 新鲜水果现摘现发延安早熟酥梨脆甜多汁青皮脆梨子非库尔勒香梨皇冠梨盒装 西北",
+                "src": "https://imgservice1.suning.cn/uimg1/b2c/image/Bsixz1gQ2EBVEzEKgq5KTw.jpg_400w_400h_4e",
+                "price": "¥29.90",
+                "dis": "100+评价"
+            },
+            {
+                "name": "泰国进口山竹 2.5kg 新鲜水果",
+                "src": "https://imgservice1.suning.cn/uimg1/b2c/image/Q90KT1HqWrBHFu2qkic-aQ.jpg_400w_400h_4e",
+                "price": "¥68.00",
+                "dis": "7300+评价"
+            },
+            {
+                "name": "【天府生鲜】西沛国产 四川蒲江红心猕猴15枚装单果70-90g中果 猕猴桃奇异果 西南水果",
+                "src": "https://imgservice5.suning.cn/uimg1/b2c/image/cEdBh7vJSTTvYdkPKccHNQ.jpg_400w_400h_4e",
+                "price": "¥29.90",
+                "dis": "100+评价"
+            },
+            {
+                "name": "福建黄金百香果6个装 果径约50mm 热带水果新鲜西番莲鸡蛋果",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/SyHLxpwk42t2nqOdXuTVmA.jpg_400w_400h_4e",
+                "price": "¥10.80",
+                "dis": "100+评价"
+            },
+            {
+                "name": "【中华特色】四川馆 攀枝花凯特芒果2.5斤带箱装一级 单果200g左右 热带水果生鲜甜芒果四川特产 西南",
+                "src": "https://imgservice5.suning.cn/uimg1/b2c/image/KJQK5nbtYot2qkTv904JZw.jpg_400w_400h_4e",
+                "price": "¥29.90",
+                "dis": "100+评价"
+            },
+            {
+                "name": "陈小四水果 新鲜红苹果嘎啦 5斤装 新鲜水果 国产生鲜 其他",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/i1dZgXPAQ84JMGOEcLQTnQ.jpg_400w_400h_4e",
+                "price": "¥24.80",
+                "dis": "40+评价"
+            },
+            {
+                "name": "【中华特色】 【8月20日发货】广元馆 苍溪红心猕猴桃12枚装60-80G/枚当季新鲜水果奇异果猕猴桃 西南",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/NtEW2tzDabmU2IwAygIfxw.jpg_400w_400h_4e",
+                "price": "¥32.90",
+                "dis": "10+评价"
+            },
+            {
+                "name": "Zespri佳沛 新西兰阳光金奇异果 16个礼盒装 经典36号果 单果重约90-100g 新鲜水果",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/By8SI7gSLyETHGKWS9-6NA.png_400w_400h_4e",
+                "price": "¥118.00",
+                "dis": "3100+评价"
+            },
+            {
+                "name": "泰国金枕头榴莲 1个 3-4斤 金枕榴莲 新鲜水果 生鲜水果 进口水果 陈小四水果 其他",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/atmosphere/363yb_WsPYCt3r_hAmog_g.jpg_400w_400h_4e",
+                "price": "¥78.00",
+                "dis": "900+评价"
+            },
+            {
+                "name": "苗家十八洞 秭归夏橙2.5斤装 单果果径55-60mm 橙味十足 【偶数发货】",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/Sqa6-nrMH35RTwntpc7AQg.jpg_400w_400h_4e",
+                "price": "¥19.90",
+                "dis": "100+评价"
+            },
+            {
+                "name": "【两件起售】田阳馆 凯特芒果小果2.5斤（单果约150-300g）新鲜水果原产地现摘现发 华南",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/_Dokc7nab230lJ2cnfUT6g.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "100+评价"
+            },
+            {
+                "name": "雉鲜生 12枚百香果+4枚青柠檬 网红饮品推荐百香果蜂蜜柠檬茶 新鲜水果",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/S4pj8l0s_oimPuLx19sjQg.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "800+评价"
+            },
+            {
+                "name": "四川安岳柠檬 4个装 一级中果 单果约90-110g 新鲜水果",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/YwPJpu4dufmuRWXJ-sJ6tA.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "2400+评价"
+            },
+            {
+                "name": "越南进口红心火龙果 3个装 单果约330-420g 新鲜水果",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/8YNbndqmLWE4IehQPVx02A.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "1000+评价"
+            },
+            {
+                "name": "【中华特色】武汉馆 水蜜桃5斤新鲜水果新鲜桃子毛桃红桃鲜桃 华中",
+                "src": "https://image1.suning.cn/uimg/b2c/newcatentries/0070119287-000000000632631310_1.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "800+评价"
+            },
+            {
+                "name": "山东苹果 简装1.5kg装 果径75-80mm冷藏国产苹果类 新鲜水果",
+                "src": "https://imgservice1.suning.cn/uimg1/b2c/image/C7N6-g_ypHyWzOlXfPURjQ.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "200+评价"
+            },
+            {
+                "name": "美国车厘子 2斤 车厘子/樱桃 新鲜水果 生鲜水果 陈小四水果 其他",
+                "src": "https://imgservice5.suning.cn/uimg1/b2c/image/1fdHEOsLfu51uVvnGdamHw.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "700+评价"
+            },
+            {
+                "name": "陕西嘎啦 5斤 苹果 冷藏国产苹果类 新鲜水果 陈小四水果 其他",
+                "src": "https://imgservice5.suning.cn/uimg1/b2c/image/0_gQ5dfr1LoLQ6VGSe1VXw.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "1600+评价"
+            },
+            {
+                "name": "果农富 陕西嘎啦苹果 9±0.2斤 单果60-70mm 新鲜水果青红苹果丑苹果脆甜苹果",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/SYhq3H7eH9hr_P5T8HeaLg.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "100+评价"
+            },
+            {
+                "name": "陕西大荔冬枣 1kg装 鲜枣脆甜冬枣 新鲜水果",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/msf9TLowXEoJPqiaBx0Pdw.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "20+评价"
+            },
+            {
+                "name": "【中华特色】延长馆 耕基 早熟嘎啦红富士苹果2.5kg 陕西新鲜水果延安苹果山地国产水果脆甜粉面香苹果 西北",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/NaADBKY5mL_Hg9JIorcjSA.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "40+评价"
+            },
+            {
+                "name": "陕西特产 黑布林李子 5斤 李子 新鲜水果 生鲜水果 陈小四水果 其他",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/M71hJb7uTlPGMV1FV2utjw.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "200+评价"
+            },
+            {
+                "name": "陈小四水果 湖北秭归夏橙 5斤 单果约55mm  橙子 新鲜水果 其他",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/jSV5FWFEKOgSBBCJA31XBg.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "20+评价"
+            },
+            {
+                "name": "【中华特色】 达州馆 四川汶川茂县羌脆李清脆李子5斤 阿坝州青脆李子 空心脱骨青李子",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/eTp_AsKjZRt-TtCmnGti1Q==.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "100+评价"
+            },
+            {
+                "name": "山西嘎啦苹果5斤装 当季水果苹果 国产苹果非红富士苹果",
+                "src": "https://imgservice5.suning.cn/uimg1/b2c/image/pKZTlc2b6Ah2pQtMuMFCYQ.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "10+评价"
+            },
+            {
+                "name": "博多客 巴掌榴莲2-3斤带壳新鲜泰国风味甲仑榴莲水果非金枕干尧猫山榴莲",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/dW1brx_IaRKHWBqlupdKJA.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "200+评价"
+            },
+            {
+                "name": "果之缘 泰国进口金枕头榴莲水果单果4-5斤鲜呗呗,注意:不熟千万别生劈，联系在线客服，生劈放坏不赔",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/lJeqn20hlki-rzvPZeIVPw.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "2600+评价"
+            },
+            {
+                "name": "【精品果】烟台红富士苹果2.5斤 70-80mm左右 新鲜水果 苏宁特色生鲜",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/zQu70N0kKLuxFfvj-nNDHA.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "800+评价"
+            },
+            {
+                "name": "【中华特色】 大荔馆 陕西 零点先到家酸甜可口猕猴桃单果80-100克（12个）",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/yLU4dswB7f1SerQ8s5KHKQ.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "10+评价"
+            },
+            {
+                "name": "【两件起售】田阳馆 凯特芒果小果2.5斤（单果约150-250g）新鲜水果原产地现摘现发 华南",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/RTSdgvgLbPEov3782RJczg.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "300+评价"
+            },
+            {
+                "name": "(泡沫箱+冰袋)悠乐果 越南红心火龙果4个装 单果约300g-450g 新鲜水果",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/PmnSqRpRBWRyTmjLnOslHA==.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "5500+评价"
+            },
+            {
+                "name": "陈小四水果 泰国金枕榴莲 4-5斤 一级果 新鲜水果 进口水果 金枕头榴莲 其他",
+                "src": "https://imgservice5.suning.cn/uimg1/b2c/image/DvIMdMPD96RT03A642Abxg.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "100+评价"
+            },
+            {
+                "name": "广西金都一号红心火龙果5斤精选大果 新鲜水果单果300g以上",
+                "src": "https://imgservice1.suning.cn/uimg1/b2c/image/0zcbnCqATifKA1klCoi11Q.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "100+评价"
+            },
+            {
+                "name": "陈小四水果 四川红心猕猴桃/奇异果 15枚 单果约60-80g 新鲜水果 其他",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/F8RGMjfHqbKUNxUnX4ZzaQ.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "80+评价"
+            },
+            {
+                "name": "品珍鲜活 美国车厘子2.2磅 果径28-30mm大规格JJ级果径进口樱桃水果新鲜拍下3-4天发货",
+                "src": "https://imgservice1.suning.cn/uimg1/b2c/image/PpJ7TgSog5fsNGOvhAeWQw.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "60+评价"
+            },
+            {
+                "name": "Zespri佳沛 新西兰阳光金奇异果 10个装 经典39果 单果重80-90g",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/GQCaahTGqDpS2mzHklh5bw.png_400w_400h_4e",
+                "price": "",
+                "dis": "100+评价"
+            },
+            {
+                "name": "【中华特色】湘西馆 蒲江红心猕猴桃6个装 单果果重70-90g 果肉香甜 偶数发货 华中",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/ZIuqs_0jNOZAT9psUelRcw.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "10+评价"
+            },
+            {
+                "name": "品裕 山东精选红富士苹果8粒装 果径80-85mm 新鲜水果",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/JQXd2ZHYhOHTIrEMhNFQMA.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "10+评价"
+            },
+            {
+                "name": "进口埃及脐橙 2.5kg装 新鲜水果",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/YIdgF_RAQfwei46MI9odmA.png_400w_400h_4e",
+                "price": "",
+                "dis": "600+评价"
+            },
+            {
+                "name": "陕西嘎啦 5斤 苹果 冷藏国产苹果类 新鲜水果 陈小四水果 其他",
+                "src": "https://imgservice5.suning.cn/uimg1/b2c/image/swJC-q3yHKalAMk1BpAWqw.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "100+评价"
+            },
+            {
+                "name": "【中华特色】湘西馆 陕西嘎啦苹果2.25斤装 单果重90-120g左右 酸甜脆爽 偶数发货 华中",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/9BaSKP_Sf_oeYeawAZ2Aiw.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "70+评价"
+            },
+            {
+                "name": "苗家十八洞 陕西早酥梨青皮梨2.5斤装 单果重130-160g左右 肉质饱满 偶数发货",
+                "src": "https://imgservice5.suning.cn/uimg1/b2c/image/odU1UnHo6Js21KNiAagg3Q.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "40+评价"
+            },
+            {
+                "name": "湖北秭归夏橙 5斤 单果约65mm 橙子 脐橙 新鲜水果 生鲜水果 陈小四水果 其他",
+                "src": "https://imgservice4.suning.cn/uimg1/b2c/image/g3fiKDb6hWiKE2UaMQmdrQ.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "100+评价"
+            },
+            {
+                "name": "【中华特色】四川馆 红心猕猴桃12个装 中果 单果70g-90g 西南",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/r5SJuABMmHORU4zvr9JLZQ.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "90+评价"
+            },
+            {
+                "name": "海南小青柠 500g装 新鲜水果",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/n2AfnbQxLfjD2bk6WgK63Q.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "100+评价"
+            },
+            {
+                "name": "【2019年新果】现摘苹果新鲜水果孕妇水果5斤装净重4.5-5斤约10-16个",
+                "src": "https://imgservice5.suning.cn/uimg1/b2c/image/N3cvZHNtMuUX2eOP3--Z2A.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "40+评价"
+            },
+            {
+                "name": "陕西 早酥梨 2.25斤（偶数发货 拍2件约12-16个合并发货）",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/5v1H7WSOVGIkxRw-ZXp5Rw.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "30+评价"
+            },
+            {
+                "name": "湖北秭归夏橙 2.5斤 单果55mm左右 秭归脐橙 橙子 新鲜水果 苏宁特色生鲜 华东",
+                "src": "https://imgservice2.suning.cn/uimg1/b2c/image/vddlAPrTFyEpsf6Zoveopg.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "700+评价"
+            },
+            {
+                "name": "苗家十八洞 陕西嘎啦苹果2.25斤装 单果重90-120g左右 酸甜脆爽 【偶数发货】",
+                "src": "https://imgservice1.suning.cn/uimg1/b2c/image/dxj3rxHo2c8bQ5SJQPS8qA.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "30+评价"
+            },
+            {
+                "name": "云南蒙自石榴 2.5kg 新鲜水果 甜石榴 苏宁生鲜",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/ypElVuyJCFE7b3_7CV58uw.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "9评价"
+            },
+            {
+                "name": "陕西嘎啦 2.5斤 苹果 冷藏国产苹果类 新鲜水果 陈小四水果 其他",
+                "src": "https://imgservice5.suning.cn/uimg1/b2c/image/ueI3mn7Qqh1XQy4H4kFgRQ.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "400+评价"
+            },
+            {
+                "name": "【中华特色】静宁扶贫馆 红六福REDLEOFU 静宁红富士苹果 12枚75# 箱装 静宁苹果 新鲜水果 富硒营养 西北",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/mFZjmV5pM8J3o-oVzE1EjA.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "80+评价"
+            },
+            {
+                "name": "新鲜红苹果嘎啦  2.5斤装 苹果 冷藏国产苹果类 新鲜水果 陈小四水果 其他",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/vQFMMArO9Kde3WU-jL-cfw.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "20+评价"
+            },
+            {
+                "name": "海南菠萝蜜 1个 14-17斤 黄肉菠萝蜜 新鲜水果 生鲜水果 国产水果 陈小四水果 其他",
+                "src": "https://imgservice3.suning.cn/uimg1/b2c/image/SWL_6P0Ha9DgqF1DUEfd3g.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "100+评价"
+            },
+            {
+                "name": "河北皇冠梨2.5斤 当季现摘新鲜水果梨子雪梨砀山梨香梨酥梨脆梨",
+                "src": "https://imgservice1.suning.cn/uimg1/b2c/image/GW_5RTLTUoaKyGs5a9IIFw.jpg_400w_400h_4e",
+                "price": "",
+                "dis": "10+评价"
+            }
+        ];
+
+        var oUl = document.getElementsByTagName("ul")[0];
+        var res = data.map(function(ele,index){
+            return `<li>
+                <img src= ${ele.src} alt="">
+                <h2>${ele.price}</h2>
+                <p>${ele.name}</p>
+                <span>${ele.dis}</span>
+            </li>`
+        }).join('');
+        oUl.innerHTML = res;
+
+        // 对象转字符串 
+        function o2s(o){
+            var arr = [];
+            for(var k in o){
+                arr.push( `${k}=${o[k]}`);
+            }
+            return arr.join('&');
+        }
+
+        var oLis = document.getElementsByTagName("li");
+        for(var i = 0; i<oLis.length ; i++){
+            oLis[i].index = i;
+            oLis[i].onclick = function(){
+                var item = data[this.index];
+                var queryString =  o2s(item);
+                window.location.href = "w1详情页.html?" + queryString; 
+            }
+        }
+
+    </script>
+</body>
+
+</html>

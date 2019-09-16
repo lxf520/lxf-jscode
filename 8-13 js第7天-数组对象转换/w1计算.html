@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 计算数组的最大值 | 最小值和平均值 [1,2,31,3,22,4,1213,455,21]  -->
+    <script>
+        var arr = [1, 2, 31, 3, 22, 4, 1213, 455, 21];
+        var arr1 = arr.sort(function (a, b) {
+            return a - b;
+        })
+        var max = arr1[arr1.length - 1];
+        console.log(max);
+
+        var arr2 = arr.sort((a, b) => b - a);
+        var min = arr2[arr2.length - 1];
+        console.log(min);
+
+        function average(arr) {
+            var sum = 0 ;
+            for (var i = 0, len = arr.length; i < len; i++) {
+                sum += arr[i];
+            }
+            var t = 0;
+            t = sum / arr.length;
+            return t;
+        }
+        // console.log(t);
+        var a = average( [1,2,3]);
+        console.log(a);
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .box {
+            position: relative;
+            width: 600px;
+            min-height: 300px;
+            margin: 50px auto;
+        }
+
+        ul {
+            border-radius: 15px;
+            width: 600px;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+
+            border: 2px solid rgb(119, 118, 118);
+        }
+
+        li {
+            background-color: #ccc;
+            padding: 0 8px;
+            margin: 2px;
+            line-height: 30px;
+            min-height: 30px;
+            border-radius: 10px;
+            float: left;
+            clear: both;
+        }
+
+        .my-msg {
+            float: right;
+            background-color: rgb(43, 235, 26);
+            color: white;
+        }
+
+        textarea {
+            margin-top: 10px;
+            width: 600px;
+            min-height: 40px;
+            font-size: 20px;
+            resize: none;
+        }
+
+        button {
+            width: 60px;
+            height: 30px;
+        }
+
+        #input {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #555;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>价值一个亿的人工智能聊天机器人</h1>
+    <div class="box">
+        <ul>
+        </ul>
+        <textarea name="" id=""></textarea>
+        <button>发送</button>
+        <div id="input">对方正在输入...</div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            //绑定标签
+            var oUl = document.getElementsByTagName("ul")[0];
+            var oTextarea = document.getElementsByTagName("textarea")[0];
+            var oBtn = document.getElementsByTagName("button")[0];
+            var oInput = document.getElementById('input');
+
+            function init() {
+                //拿到输入框的值
+                var val = oTextarea.value;
+                var li = document.createElement("li");
+
+                // 给自己输入的li标签家个类名
+                li.innerHTML = val;
+                li.setAttribute('class', 'my-msg');
+                oUl.appendChild(li);
+                //搞两个数组实现人工智能回复
+                var requestArr = ['猪猪', "在吗？", "一起吃饭吗？", "今晚约吗？", "今晚一起出去方便吗？"];
+                var responseArr = [
+                    '瓜瓜', ["在。", "不在。", "你猜？"], "你出钱我一定去", "叔叔，我们不约。", "我家里有厕所。"
+                ];
+
+                var nores = ["这个城市的风很大，孤独的人总是晚回家。", '风太大听不清楚', '我不听我不听'];
+                // 查找输入语句在数组1的下标
+                var index = requestArr.indexOf(val);
+                // 如果有，判断数组2里面对应的回复是不是一个数组
+                if (index == -1) {
+                    res = nores[getRandom(2,0)];
+                } else {
+                    if (Array.isArray(responseArr[index])) {
+                        var len = responseArr[index].length;
+                        res = responseArr[index][getRandom(len - 1, 0)];
+                    } else {
+                        res = responseArr[index];
+                    }
+                }
+                // 创建回复标签，把内容插进去
+                var response = document.createElement('li');
+                response.innerHTML = res;
+
+                // 搞个延迟函数，让提醒输入的状态两秒后消失
+                oInput.style.display = 'block';
+                setTimeout(() => {
+                    oInput.style.display = 'none';
+
+                    oUl.appendChild(response);
+                }, getRandom(1500, 1000));
+            }
+
+
+            // 随机生成数字函数
+            function getRandom(max, min) {
+                return parseInt(Math.random() * (max - min + 1)) + min
+            }
+            oBtn.onclick = function () {
+                init();
+            }
+
+            oTextarea.onkeydown = function (ev) {
+                //回车键：13
+                if (ev.keyCode == 13) {
+                    init();
+                }
+                // return false; //阻止默认行为:回车的时候不会换行
+            }
+
+        }
+    </script>
+
+
+</body>
+
+</html>

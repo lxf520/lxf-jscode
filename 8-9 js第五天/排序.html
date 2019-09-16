@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*自己写的排序算法！！！ */
+        function f() {
+            var len = arguments.length;
+            var arr = [];
+            var c;
+            for (var k = 0; k < len; k++) {
+                for (var i = 0; i < len; i++) {
+                    for (var j = i + 1; j < len; j++) {
+                        if (arguments[i] > arguments[j]) {
+                            c = arguments[i];
+                            arguments[i] = arguments[j];
+                            arguments[j] = c;
+                        }
+                        j = ++i;
+                    }
+                }
+            }
+            console.log(arguments);
+        }
+        f(2, 1, 5, 3, 4, 0);
+    </script>
+
+    <script>
+        /*网上找的冒泡排序*/
+        function bubbleSort(arr) {
+            var len = arr.length;
+            for (var i = 0; i < len; i++) {
+                for (var j = 0; j < len - 1 - i; j++) {
+                    if (arr[j] > arr[j + 1]) { //相邻元素两两对比
+                        var temp = arr[j + 1]; //元素交换
+                        arr[j + 1] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+        var arr = [1,9,2,4,3];
+        console.log(bubbleSort(arr));
+        
+    </script>
+
+</body>
+
+</html>

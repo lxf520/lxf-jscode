@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="text" placeholder="字符串">
+    <input type="text" id="word" placeholder="字">
+    <button>确定</button>
+    <script>
+        var text = document.getElementById("text");
+        var word = document.getElementById("word");
+        var btn = document.getElementsByTagName("button")[0];
+        btn.onclick = function(){
+            var txt = text.value;
+            var w = word.value;
+            var value = 0 ;
+            for(var i=0; i<txt.length; i++){
+                console.log(txt.charAt(i));
+                // console.log("一个字"+w);
+
+                if(txt.charAt(i) == w){
+                    value++;
+                }
+            }
+            console.log(`${txt}字符串里面有 ${value} 个${w}`);
+            
+        }
+
+
+    </script>
+</body>
+</html>

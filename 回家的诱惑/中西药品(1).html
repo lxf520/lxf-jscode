@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="../css/base_px.css"> -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #main {
+            height: 100%;
+            width: 1000px;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        #box .con {
+            height: 400px;
+            width: 250px;
+        }
+
+        span {
+            font-size: 14px;
+            line-height: 40px;
+            margin: 20px;
+        }
+
+        .top img {
+            margin: 22px;
+        }
+
+        .bottom .min {
+            display: block;
+            background: #E3393B;
+            height: 30px;
+            width: 100px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 14px;
+            color: aliceblue;
+        }
+
+        s {
+            color: #aeacac;
+
+        }
+
+        i {
+            font-size: 18px;
+            color: #E3393B;
+            margin-right: 5px;
+            font-style: normal;
+        }
+
+        a {
+            height: 36px;
+            display: block;
+            width: 200px;
+            text-align: center;
+            font-size: 12px;
+            margin: 20px;
+            color: #656565;
+            overflow: hidden;
+        }
+
+        li {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 获取网页标签内容 -->
+    <div id="main">
+        <ul>
+
+        </ul>
+    </div>
+    <script>
+        let date = [{
+            "src": "https://image.jianke.com/suo/mall/product/201908/5d2bcca65bbc40949f9a7f53b99fa4f0!200x200.jpg",
+            "span": "￥<i>23.5</i>",
+            "s": "￥55.0",
+            "a": " <img alt=\"Rx\" src=\"http://image.jianke.com/jianke/images/ico/ico_rx.gif\" title=\"此药品为处方药\" width=\"26\" height=\"14\" data-original=\"//http://image.jianke.com/jianke/images/ico/ico_rx.gif\" style=\"display: inline-block;\">\羚羊角颗粒(葵花)&nbsp;平肝息风，清肝明目，散血解毒。用于高热惊痫，神昏痉厥，子痫抽搐，癫痫发狂，头痛眩晕，目赤翳障，温毒发斑，痈肿疮毒。"
+        }, {
+            "src": "https://image.jianke.com/suo/mall/product/201908/af446651a9a64afcb3bf5ceabe1ea9df!200x200.jpg",
+            "span": "￥<i>31.0</i>",
+            "s": "￥69.0",
+            "a": " <img alt=\"Rx\" src=\"http://image.jianke.com/jianke/images/ico/ico_rx.gif\" title=\"此药品为处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_rx.gif\" style=\"display: inline-block;\">\羚羊角颗粒(葵花)&nbsp;平肝息风，清肝明目，散血解毒。用于高热惊痫，神昏痉厥，子痫抽搐，癫痫发狂，头痛眩晕，目赤翳障，温毒发斑，痈肿疮毒。"
+        }, {
+            "src": "https://image.jianke.com/suo/mall/product/201907/4f9e71c1591a48e49aa12aa500b67895!200x200.jpg",
+            "span": "￥<i>20.8</i>",
+            "s": "￥37.0",
+            "a": " <img alt=\"Rx\" src=\"http://image.jianke.com/jianke/images/ico/ico_rx.gif\" title=\"此药品为处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_rx.gif\" style=\"display: inline-block;\">\小儿豉翘清热颗粒(同贝)&nbsp;疏风解表，清热导滞。用于小儿风热感冒挟滞证，证见：发热咳嗽，鼻塞流涕，咽红肿痛，纳呆口渴，脘腹胀满，便秘或大便酸臭，溲黄。"
+        }, {
+            "src": "https://image.jianke.com/suo/mall/product/201901/7cd20d3e2cac40eca3c1e76352fb813e!200x200.jpg",
+            "span": "￥<i>10.0</i>",
+            "s": "￥16.0",
+            "a": " <img alt=\"红OTC\" src=\"http://image.jianke.com/jianke/images/ico/ico_otc_r.gif\" title=\"此药品为非处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_otc_r.gif\" style=\"display: inline-block;\">\小儿氨酚黄那敏颗粒(999)&nbsp;适用于缓解儿童普通感冒及流行性感冒引起的发热、头痛、四肢酸痛、打喷嚏、流鼻涕、鼻塞、咽痛等症状。"
+        }, {
+            "src": "https://image.jianke.com/suo/mall/product/201903/3fd93b8280934414bfd158ab172090fb!200x200.jpg",
+            "span": "￥<i>9.5</i>",
+            "s": "￥35.0",
+            "a": " <img alt=\"红OTC\" src=\"http://image.jianke.com/jianke/images/ico/ico_otc_r.gif\" title=\"此药品为非处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_otc_r.gif\" style=\"display: inline-block;\">\小儿氨酚黄那敏颗粒(护彤)&nbsp;适用于缓解儿童普通感冒及流行性感冒引起的发热、头痛、四肢酸痛、打喷嚏、流鼻涕、鼻塞、咽痛等症状。"
+        }, {
+            "src": "https://image.jianke.com/suo/mall/product/201903/288b4761a25640dc97878884484c8afa!200x200.jpg",
+            "span": "￥<i>10.0</i>",
+            "s": "￥17.8",
+            "a": " <img alt=\"绿OTC\" src=\"http://image.jianke.com/jianke/images/ico_otc_g.gif\" title=\"此药品为非处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico_otc_g.gif\" style=\"display: inline-block;\">\小儿感冒颗粒(999)&nbsp;疏风解表，清热解毒。用于小儿风热感冒，症见发热、头胀痛、咳嗽痰黏、咽喉肿痛；流感见上述证候者。\n "
+        }, {
+            "src": "https://image.jianke.com/suo/upload/prodimage/201805/201851717308751!200x200.jpg",
+            "span": "￥<i>7.5</i>",
+            "s": "￥10.0",
+            "a": " <img alt=\"红OTC\" src=\"http://image.jianke.com/jianke/images/ico/ico_otc_r.gif\" title=\"此药品为非处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_otc_r.gif\" style=\"display: inline-block;\">\小儿氨酚烷胺颗粒(优卡丹)&nbsp;适用于缓解儿童普通感冒及流行性感冒引起的发热、头痛、四肢酸痛、打喷嚏、流鼻涕、鼻塞、咽痛等症状，也可用于儿童流行性感冒的预防和治疗。"
+        }, {
+            "src": "https://image.jianke.com/suo/upload/prodimage/201601/201612294536884!200x200.jpg",
+            "span": "￥<i>20.8</i>",
+            "s": "￥30.8",
+            "a": " <img alt=\"红OTC\" src=\"http://image.jianke.com/jianke/images/ico/ico_otc_r.gif\" title=\"此药品为非处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_otc_r.gif\" style=\"display: inline-block;\">\布洛芬混悬液(美林)&nbsp;用于儿童普通感冒或流感引起的发热。也用于缓解儿童轻至中度疼痛，如头痛、关节痛、偏头痛、牙痛、肌肉痛、神经痛。"
+        }, {
+            "src": "https://image.jianke.com/suo/upload/prodimage/201810/2018101818031893!200x200.jpg",
+            "span": "￥<i>21.5</i>",
+            "s": "￥26.0",
+            "a": " <img alt=\"Rx\" src=\"http://image.jianke.com/jianke/images/ico/ico_rx.gif\" title=\"此药品为处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_rx.gif\" style=\"display: inline-block;\">\安儿宁颗粒(金诃)&nbsp;清热祛风，化痰止咳。用于小儿风热感冒，咳嗽有痰， 发热咽痛，上呼吸道感染见上述证候者。"
+        }, {
+            "src": "https://image.jianke.com/suo/upload/prodimage/201605/201653010420813!200x200.jpg",
+            "span": "￥<i>2.3</i>",
+            "s": "￥15.6",
+            "a": " <img alt=\"红OTC\" src=\"http://image.jianke.com/jianke/images/ico/ico_otc_r.gif\" title=\"此药品为非处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_otc_r.gif\" style=\"display: inline-block;\">\小儿氨酚黄那敏颗粒(盖克)&nbsp;适用于缓解儿童普通感冒及流行性感冒引起的发热、头痛、四肢酸痛、打喷嚏、流鼻涕、鼻塞、咽痛等症状。"
+        }, {
+            "src": "https://image.jianke.com/suo/upload/prodimage/201604/201642816225518!200x200.jpg",
+            "span": "￥<i>19.5</i>",
+            "s": "￥32.0",
+            "a": " <img alt=\"红OTC\" src=\"http://image.jianke.com/jianke/images/ico/ico_otc_r.gif\" title=\"此药品为非处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_otc_r.gif\" style=\"display: inline-block;\">\儿童复方氨酚肾素片(儿童科达琳)&nbsp;适用于缓解普通感冒及流行性感冒引起的发热、头痛、四肢酸痛、打喷嚏、流鼻涕、鼻塞、咽痛等症状。"
+        }, {
+            "src": "https://image.jianke.com/suo/mall/product/201907/b78618311a7d4948b113ab43731903b9!200x200.jpg",
+            "span": "￥<i>15.0</i>",
+            "s": "￥22.0",
+            "a": " <img alt=\"红OTC\" src=\"http://image.jianke.com/jianke/images/ico/ico_otc_r.gif\" title=\"此药品为非处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_otc_r.gif\" style=\"display: inline-block;\">\布洛芬混悬液(美林)&nbsp;用于感冒或流感引起的发热，头痛。也用于缓解中度疼痛如关节痛，神经痛，偏头痛，牙痛。"
+        }, {
+            "src": "https://image.jianke.com/suo/mall/product/201908/020c035a648642b79b753385316e08ae!200x200.jpg",
+            "span": "￥<i>2.0</i>",
+            "s": "￥9.0",
+            "a": " <img alt=\"绿OTC\" src=\"http://image.jianke.com/jianke/images/ico_otc_g.gif\" title=\"此药品为非处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico_otc_g.gif\" style=\"display: inline-block;\">\对乙酰氨基酚栓&nbsp;用于儿童普通感冒或流行性感冒引起的发热，也用于缓解轻至中度疼痛如头痛、关节痛、偏头痛、牙痛、肌肉痛、神经痛。"
+        }, {
+            "src": "https://image.jianke.com/suo/mall/product/201903/ce74689d15614176bb899bbb04a18686!200x200.jpg",
+            "span": "￥<i>9.5</i>",
+            "s": "￥14.0",
+            "a": " <img alt=\"红OTC\" src=\"http://image.jianke.com/jianke/images/ico/ico_otc_r.gif\" title=\"此药品为非处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_otc_r.gif\" style=\"display: inline-block;\">\小儿氨酚黄那敏颗粒(小快克)&nbsp;用于缓解感冒或流感引起的发热、头痛、鼻塞、流涕"
+        }, {
+            "src": "https://image.jianke.com/suo/upload/prodimage/201602/2016222105212646!200x200.jpg",
+            "span": "￥<i>18.0</i>",
+            "s": "￥26.0",
+            "a": " <img alt=\"绿OTC\" src=\"http://image.jianke.com/jianke/images/ico_otc_g.gif\" title=\"此药品为非处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico_otc_g.gif\" style=\"display: inline-block;\">\小儿感冒颗粒(葵花)&nbsp;疏风解表，清热解毒。用于小儿风热感冒，症见发热、头胀痛、咳嗽痰黏、咽喉肿痛；流感见上述证候者。"
+        }, {
+            "src": "https://image.jianke.com/suo/upload/prodimage/201704/201748922127!200x200.jpg",
+            "span": "￥<i>8.5</i>",
+            "s": "￥22.0",
+            "a": " <img alt=\"绿OTC\" src=\"http://image.jianke.com/jianke/images/ico_otc_g.gif\" title=\"此药品为非处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico_otc_g.gif\" style=\"display: inline-block;\">\牛磺酸颗粒(海王)&nbsp;用于缓解感冒初期的发热。"
+        }, {
+            "src": "https://image.jianke.com/suo/upload/prodimage/201605/2016526111748391!200x200.jpg",
+            "span": "￥<i>23.5</i>",
+            "s": "￥55.0",
+            "a": " <img alt=\"Rx\" src=\"http://image.jianke.com/jianke/images/ico/ico_rx.gif\" title=\"此药品为处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_rx.gif\" style=\"display: inline-block;\">\小儿柴桂退热颗粒(百灵鸟)&nbsp;发汗解表，清里退热。用于小儿外感发热，症见：发热，头身痛，流涕，口渴，咽红，溲黄，便干等。 "
+        }, {
+            "src": "https://image.jianke.com/suo/upload/prodimage/201809/201892994027252!200x200.jpg",
+            "span": "￥<i>42.5</i>",
+            "s": "￥98.0",
+            "a": " <img alt=\"Rx\" src=\"http://image.jianke.com/jianke/images/ico/ico_rx.gif\" title=\"此药品为处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_rx.gif\" style=\"display: inline-block;\">\保婴丹(余仁生)&nbsp;疏风清热，化痰定惊。用于小儿感冒，因风寒袭表，食滞化热所致发热恶寒，喷嚏流涕，咳嗽有痰及不思饮食，夜啼易惊等。"
+        }, {
+            "src": "https://image.jianke.com/suo/upload/prodimage/201812/20181218113316534!200x200.jpg",
+            "span": "￥<i>81.3</i>",
+            "s": "￥81.5",
+            "a": " <img alt=\"Rx\" src=\"http://image.jianke.com/jianke/images/ico/ico_rx.gif\" title=\"此药品为处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_rx.gif\" style=\"display: inline-block;\">\羚羊角口服液(山丹)&nbsp;平肝熄风，散血镇惊。用于高热及高热引起的头痛眩晕，神昏惊厥等症。"
+        }, {
+            "src": "https://image.jianke.com/suo/upload/prodimage/201811/2018116191415675!200x200.jpg",
+            "span": "￥<i>90.0</i>",
+            "s": "￥0.0",
+            "a": " 余仁生 保婴丹 6瓶&nbsp;疏风清热，化痰定惊。用于小儿感冒，因风寒袭表，食滞化热所致发热恶寒，喷嚏流涕，咳嗽有痰及不思饮食，夜啼易惊等。"
+        }, {
+            "src": "https://image.jianke.com/suo/upload/prodimage/201510/20151012144231573!200x200.jpg",
+            "span": "￥<i>51.5</i>",
+            "s": "￥63.3",
+            "a": " <img alt=\"Rx\" src=\"http://image.jianke.com/jianke/images/ico/ico_rx.gif\" title=\"此药品为处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_rx.gif\" style=\"display: inline-block;\">\牛黄抱龙丸(同仁堂)&nbsp;清热镇惊，祛风化痰。用于小儿风痰壅盛所致的惊风，症见高热神昏、惊风抽搐。"
+        }, {
+            "src": "https://image.jianke.com/suo/upload/prodimage/201604/2016427205814596!200x200.jpg",
+            "span": "￥<i>19.0</i>",
+            "s": "￥19.0",
+            "a": " <img alt=\"红OTC\" src=\"http://image.jianke.com/jianke/images/ico/ico_otc_r.gif\" title=\"此药品为非处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_otc_r.gif\" style=\"display: inline-block;\">\小儿氨酚烷胺颗粒(葵花康宝)&nbsp;适用于缓解儿童普通感冒及流行性感冒引起的发热、头痛、四肢酸痛、打喷嚏、流鼻涕、鼻塞、咽痛等症状，也可用于儿童流行性感冒的预防和治疗。"
+        }, {
+            "src": "https://image.jianke.com/suo/upload/prodimage/201903/2019321144339535!200x200.jpg",
+            "span": "￥<i>4.5</i>",
+            "s": "￥9.0",
+            "a": " <img alt=\"红OTC\" src=\"http://image.jianke.com/jianke/images/ico/ico_otc_r.gif\" title=\"此药品为非处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_otc_r.gif\" style=\"display: inline-block;\">\小儿氨酚黄那敏颗粒(雪丹)&nbsp;适用于缓解儿童普通感冒及流行性感冒引起的发热、头痛、四肢酸痛、打喷嚏、流鼻涕、鼻塞、咽痛等症状。 "
+        }, {
+            "src": "https://image.jianke.com/suo/upload/prodimage/201812/2018122912128922!200x200.jpg",
+            "span": "￥<i>12.0</i>",
+            "s": "￥18.0",
+            "a": " <img alt=\"红OTC\" src=\"http://image.jianke.com/jianke/images/ico/ico_otc_r.gif\" title=\"此药品为非处方药\" width=\"26\" height=\"14\" data-original=\"//image.jianke.com/jianke/images/ico/ico_otc_r.gif\" style=\"display: inline-block;\">\小儿氨酚黄那敏颗粒(小儿速效感冒冲剂)&nbsp;适用于缓解儿童普通感冒及流行性感冒引起的发热、头痛、四肢酸痛、打喷嚏、流鼻涕、鼻塞、咽痛等症状。\n"
+        }]
+
+        let oUl = document.getElementsByTagName("ul")[0];
+
+        function news() {
+            let res = date.map(function (ele) {
+                return `<li>
+                            <div class="con">
+                                <div class="top"><img src=${ele.src}></div>
+                                <div class="bottom">
+                                    <span>${ele.span}<s>${ele.s}</s></span>
+                                    <a href="">${ele.a}<a class="min">查看详情</a></a>
+                                </div>
+                            </div>
+                        </li>`;
+            }).join("");
+            return res;
+        }
+        oUl.innerHTML = news();
+    </script>
+</body>
+
+</html>

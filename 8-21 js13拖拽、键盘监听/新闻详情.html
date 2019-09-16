@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .details {
+            display: none;
+            position: absolute;
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #f60;
+            background-color: #ffc;
+        }
+        
+        .details::before,
+        .details::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 15px;
+            border: 10px solid transparent;
+            border-bottom-color: #f60;
+        }
+        
+        .details::after {
+            top: -18px;
+            border-bottom-color: #ffc;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="newslist" id="newslist">
+        <li><a href="#" title="文顶顶因为在教室里无证开车被交警队伍截获 扣五分并处罚款1毛钱">无证驾驶</a></li>
+        <li><a href="#" title="辉辉同学因为长得太帅，在5月20被超百位程序员表白，当事人表示震惊、欣喜继而是对于只能选择一位天使作为自己对象的惆怅和无奈。">520表白活动</a></li>
+        <li><a href="#" title="号外 号外！5月21日凌晨，报警求助的浩先生在希尔顿酒店门口接受媒体采访，说对方竟然连一百块都舍不得给">希尔顿酒店趣闻</a></li>
+        <li><a href="#" title="为了弘扬乐于助人的精神，中国人大开会决定授予老王“中国好邻居”称号">关于老王</a></li>
+        <li><a href="#" title="光头强因为无视班级班规 上班伐木期间 违规与小浣熊约会看月亮被开除">关于纪律问题</a></li>
+    </ul>
+
+    <div class="details" id="details"></div>
+    <script>
+        var oDetail = document.getElementById('details');
+        var lis = document.getElementsByTagName('a');
+
+        for(var i=0,len = lis.length; i<len ; i++){
+            lis[i].onmouseenter = function(e){
+                e = e || window.event;
+
+                oDetail.style.display = "block";
+                oDetail.innerText = this.title || this.a;
+                oDetail.style.left = e.clientX + "px";
+                oDetail.style.top = e.clientY + "px";
+            }
+
+            lis[i].onmousemove = function(e){
+                e = e|| window.event;
+                oDetail.style.left = e.clientX - 20 + "px";
+                oDetail.style.top = e.clientY + 30 + "px";
+            }
+
+            lis[i].onmouseleave = function(){
+                oDetail.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>

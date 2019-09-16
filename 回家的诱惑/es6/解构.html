@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let o = {
+            name : 'lxf',
+            car : {
+                name : 'audi',
+                color : 'red',
+                price : '100'
+            }
+        }
+        // 相当于
+        // var color = o.car.color;
+        // var name = o.car.name;
+        // 写起来 简单一点
+        let {color,name,price} = o.car;
+        console.log( color,name,price );
+        
+        // 数组也可以这样写
+        let arr = [1,2,3];
+        let [a,b,c] = arr;
+        console.log(a,b,c);
+        
+        //重命名
+        let {
+            color : _color,
+            name : _name,
+            price : _price
+        }= o.car;
+
+        console.log( _color,_name,_price );
+
+
+        // 应用场景 交换两个变量的值
+        let a1=10;
+        let b1=20;
+        [b1,a1] = [a1,b1];
+        console.log(a1,b1);
+        
+        // 函数返回值
+        function fn(x,y){
+            x = x+1;
+            y = y-1;
+            return {x,y}
+        }
+        // var res = fn(4,5);
+        // console.log(res.x,res.y);
+
+        let {x,y} = fn(8,9);
+        console.log(x,y);
+        
+    </script>
+</body>
+
+</html>

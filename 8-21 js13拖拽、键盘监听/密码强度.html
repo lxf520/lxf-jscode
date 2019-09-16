@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .form {
+            position: absolute;
+            width: 250px
+        }
+        
+        .level {
+            position: absolute;
+            margin-top: 20px;
+            left: 250px;
+            width: 210px;
+            height: 26px;
+            border: 3px solid #efefef;
+            border-radius: 10px
+        }
+        
+        .pwd-level-text {
+            margin-top: 20px;
+            position: absolute;
+            left: 480px;
+            height: 30px;
+            line-height: 30px
+        }
+        
+        .pwd-level {
+            width: 60px;
+            height: 16px;
+            background: #efefef;
+            display: inline-block;
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+        
+        #pwd {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <label for="pwd">密码</label>
+        <input type="text" id="pwd" placeholder="请输入密码" size="30">
+    </div>
+
+    <div class="level">
+        <span class="pwd-level"></span>
+        <span class="pwd-level"></span>
+        <span class="pwd-level"></span>
+    </div>
+
+    <span class="pwd-level-text"></span>
+    <script>
+        var oPwd = document.getElementById('pwd');
+        var spans = document.getElementsByClassName('pwd-level');
+        console.log(spans[0]);
+        var result = document.getElementsByClassName("pwd-level-text")[0];
+
+        oPwd.oninput = function(){
+            var con = this.value;
+            var hasNumber = false;
+            var hasCharA = false;
+            var hasCharB = false;
+            // 先遍历，拿到这个值的Ascoll码
+            for(var i=0;i<con.length;i++){
+                var code = con[i].charCodeAt();
+                console.log(code);
+                
+                // 拿到这个值做一下判读啊
+                if (code >= 48 && code <= 57) {
+                    /* 数字 */
+                    hasNumber = true;
+                }
+
+                if (code >= 97 && code <= 122) {
+                    /* 小写字母 */
+                    hasCharA = true;
+                }
+
+                if (code >= 65 && code <= 90) {
+                    /* 大写字母 */
+                    hasCharB = true;
+                }  
+            }
+            console.log(`是否有数字 ${hasNumber} 是否有小写字母 ${hasCharA} 是否有大写字母${hasCharB}`);
+
+            if(hasNumber && hasCharA && hasCharB){
+                spans[0].style.background = "red";
+                spans[1].style.background = "green";
+                spans[2].style.background = "blue";
+                result.innerText = "强"
+            }
+            if(hasCharB && hasCharA || hasNumber&&hasCharB || hasCharA && hasCharB){
+                spans[0].style.background = "red";
+                spans[1].style.background = "green";
+                result.innerText = "中"
+
+            }
+            if(hasCharA || hasCharB || hasNumber){
+                spans[0].style.background = "red";
+                result.innerText = "弱"
+            }
+            
+        }
+        // 绑定标签
+        // 拿到输入框的值
+        // 转为ASCLL码
+        // 判断大写、小写、字母是否存在
+            // 创建三个判断存在的状态，默认为false，检测，如果存在，改变状态
+        // 如果三个状态同时存在，强；两个同时存在，中；一个，弱；将文字插入页面
+    </script>   
+</body>
+
+</html>

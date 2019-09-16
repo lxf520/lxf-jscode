@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span {
+            position: absolute;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="body"></div>
+    <script>
+        var body = document.getElementById('body');
+
+        function getRandom(max, min) {
+            return parseInt(Math.random() * (max - min + 1)) + min
+        }
+
+        function getRandomColor() {
+            var text = '0123456789ABCDEF';
+            var cont = "#";
+            for (var i = 0; i < 6; i++) {
+                var index = parseInt(Math.random() * 16);
+                cont += text[index];
+            }
+            return cont;
+        }
+
+
+
+        for (var i = 0; i < 10; i++) {
+
+            var o = document.createElement('span');
+            o.style.backgroundColor = getRandomColor();
+
+            o.style.width = getRandom(40, 30) + 'px';
+            o.style.height = getRandom(40, 30) + 'px';
+
+            o.style.left = getRandom(1400, 30) + 'px';
+            o.style.top = getRandom(600, 30) + 'px';
+
+            body.appendChild(o);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 主要用于回调函数 -->
+    <script>
+        // 箭头函数没有this,内部的this获取的是外部作用域中的this
+        // 箭头函数没有argument
+        // 不能应用call apply bind
+
+
+        // 语法：fn = (a,b,b) => {函数体}
+        // 简写  let fn = a => 函数体
+        let  fn = (a,b)=> a+b ;
+        console.log( fn(1,2) );
+         
+console.log('-----------');
+
+        setInterval(()=> console.log('task--'),1000);   //用于回调函数
+        
+        var arr = [1,2,3];
+        arr.forEach( (ele,index) => console.log(ele)  );
+    </script>
+</body>
+</html>

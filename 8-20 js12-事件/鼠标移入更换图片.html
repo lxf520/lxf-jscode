@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .box{
+            width: 260px;
+            margin: 50px auto;border: 1px solid #bbb;
+            text-align: center;
+        }
+        .big img{
+            width: 250px;
+            height: 250px;
+        }
+        .small{
+            overflow: hidden;
+        }
+        .small li{
+            float: left;list-style: none;}
+        .small img{
+            width: 56px;
+            height: 56px;
+            margin: 4px;
+        }
+        .active{
+            border: 1px solid red;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var bigImg = document.getElementById('bigImg');
+            var smallImg = document.getElementsByClassName('small')[0].getElementsByTagName('img');
+            console.log(smallImg);
+            
+
+            for(var i=0 ; i<4 ; i++){
+                 smallImg[i].index = i;
+                 smallImg[i].onmouseover = function(){
+                    // console.log(this.src);
+                    
+                    bigImg.src = this.src;
+                    for(var i=0; i<4; i++){
+                        smallImg[i].className = '';
+                    }
+                    this.className = 'active';
+                 }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <div class="big">
+            <img id="bigImg" src="img/small_1.jpg" alt="">
+        </div>
+        <ul class="small">
+            <li><img src="img/small_1.jpg" alt=""></li>
+            <li><img src="img/small_2.jpg" alt=""></li>
+            <li><img src="img/small_3.jpg" alt=""></li>
+            <li><img src="img/small_4.jpg" alt=""></li>
+        </ul>
+
+    </div>
+</body>
+</html>

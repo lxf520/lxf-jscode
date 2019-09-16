@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    请输入身高(米)<input type="text" name="" id="num1" placeholder="请输入身高(米)"><br>
+    请输入体重（千克）<input type="text" name="" id="num2" placeholder="请输入体重（千克）">
+    <button>确定</button>
+
+    <script>
+        var hei = document.getElementById("num1");
+            wei = document.getElementById("num2");
+            btn = document.getElementsByTagName("button")[0];
+        btn.onclick = function(){
+            var h = hei.value;
+                w = wei.value;
+                BMI = w / (h^2);
+            if(hei&&wei){
+                console.log(BMI);
+                if(BMI < 18.5){
+                    alert("过轻");
+                }
+                if(BMI >= 18.5 && BMI <= 24.99){
+                    alert("正常");
+                }
+                if(BMI >= 25 && BMI <=28){
+                    alert("过重");
+                }
+                if(BMI > 28 && BMI <=32){
+                    alert("肥胖");
+                }
+                if(BMI >32){
+                    alert("超胖");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

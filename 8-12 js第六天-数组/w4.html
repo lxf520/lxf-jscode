@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = new Array;
+        for(var i=2; i<=60; i+=2){
+            arr.push(i);
+        }
+        console.log(arr);
+        var arr2 = [];
+        for(var j=0; j<arr.length; j+=5){
+            var data = arr.slice(j,j+5);
+            var dataSum =0;
+            for(var k=0; k<5; k++){
+                dataSum += data[k];
+
+            }
+            arr2.push(dataSum/5);
+        }
+        console.log(arr2);
+        
+    </script>
+</body>
+</html>

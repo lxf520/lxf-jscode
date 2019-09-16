@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <button>验证</button>
+    <script>
+        var num = document.getElementsByTagName("input")[0];
+        var btn = document.getElementsByTagName("button")[0];
+
+        num.onblur = function () {
+            var n = num.value;
+            if (n.length == 0) {
+                alert("请输入号码");
+            } else if (n.length < 11) {
+                alert("请输入正确的格式");
+            } else if (n.length == 11) {
+                alert("正确的号码");
+            }
+            
+        }
+    </script>
+</body>
+
+</html>

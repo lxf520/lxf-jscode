@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        for(i=10000; i<99999 ; i++){
+            var n1 = i%10;
+            var n2 = parseInt(i%100/10);
+            var n3 = parseInt(i%1000/100);
+            var n4 = parseInt(i%10000/1000);
+            var n5 = parseInt(i/10000);
+            if(n1 == n5 && n2 == n4 && n2 == n1+1 && n3 == n2+1){
+                console.log(i);
+            }            
+        }
+    </script>
+</body>
+</html>

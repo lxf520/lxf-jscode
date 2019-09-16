@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var array = ["瓜瓜","zhuzhu","猪猪"];
+        /* 添加操作：往数组的屁股后面新添加一个元素 */
+        array.push("大佬","大瓜");
+        console.log(array);
+        /* 添加操作：往数组的头部新添加元素  */
+        array.unshift("任我行");
+        console.log(array);
+        /* 添加操作：往数组的任意位置新添加元素 */
+        /* 第一个参数：插入位置的索引 */
+        /* 第二个参数：固定写0，表示添加 */
+        /* 第三个参数：插入的数据 */
+        array.splice(2,0,"巴拉拉");
+        console.log(array);
+        /* 第二个参数：写1-N为删除个数 */
+        array.splice(1,3);
+        console.log(array);
+        /* 删除操作：从数组的末尾删除元素 */
+        array.pop();
+        console.log(array);
+        /* 删除操作：从数组的头部删除元素 */
+        array.shift();
+        console.log(array);
+
+       
+    </script>
+</body>
+</html>

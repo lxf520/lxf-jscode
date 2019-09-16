@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="num">
+    <button>判断</button>
+    <input type="text" id="res">
+
+    <script>
+        var num = document.getElementById("num");
+        var btn = document.getElementsByTagName("button")[0];
+        var res = document.getElementById("res");
+        btn.onclick = function () {
+            if (num.value) {
+                if (num.value % 2 == 0) {
+                    res.value = "这是偶数";
+                } else {
+                    res.value = "这是奇数";
+                }
+            }
+            else{
+                res.value = "请输入数字"; 
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .item{
+            color: blueviolet
+        }
+    </style>
+</head>
+<body>
+    <!-- 元素节点ElementNode     文本结点  TextNode  属性结点  AttributeNode -->
+    <script>
+        // 创建标签节点
+        var oDiv = document.createElement('div');
+        // 创建文本节点
+        var oText = document.createTextNode('你萨萨顶顶');
+        oDiv.appendChild(oText);
+        //创建属性节点
+        var oAttribute = document.createAttribute('class');
+        oAttribute.nodeValue = "item";
+        oDiv.setAttributeNode(oAttribute);
+        
+        //把节点添加到元素上
+        document.body.appendChild(oDiv);
+
+        // 节点重要属性：nodeType  nodeName  nodeValue
+        
+
+        // 简单点
+        var oDiv2 = document.createElement('div');
+        oDiv2.innerHTML = "我是一个粉刷匠";
+        oDiv2.setAttribute('info','缘分');
+        document.body.appendChild(oDiv2);
+
+        // 获取属性节点
+        var val1 = oDiv2.getAttribute('info');
+        console.log(val1);
+        
+
+        
+    </script>
+</body>
+</html>

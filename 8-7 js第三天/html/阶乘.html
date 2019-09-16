@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .item{
+            margin: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+        <input type="text">
+        <button>计算阶乘</button>
+        <span>结果：</span>
+    <script>
+        var oInput = document.getElementsByTagName("input")[0];
+        var oBtn = document.getElementsByTagName("button")[0];
+        var oSpan = document.getElementsByTagName("span")[0];
+
+        oBtn.onclick = function() {
+            /* (3) 获取输入框中的值转换数值 */
+            var value = oInput.value * 1;
+            var result = 1;
+            
+            for (var i = 1; i <= value; i++) {
+                result = result * i;
+            }
+            oSpan.innerText = "结果：" + result;
+        };
+
+
+
+
+        // 九九乘法表
+        for(var a=0; a<=9; a++){
+            for(var b=1;b<=a;b++){
+                var oSpan = document.createElement("span");         //创建节点
+                oSpan.innerHTML = `${b}*${a} = ${a*b} `;            //插入内容
+                oSpan.className = "item";                           //添加类名  
+                document.body.appendChild(oSpan);                   //添加进页面
+               
+                // document.write(`${b}*${a} = ${a*b} `);
+            }
+            var oBr = document.createElement("br");
+            document.body.appendChild(oBr);
+            // document.write("<br>");
+        }
+
+
+
+        
+        var oP = document.createElement("p");
+                oP.innerHTML = "lll";
+                document.body.appendChild(oP);
+
+    </script>
+</body>
+
+</html>

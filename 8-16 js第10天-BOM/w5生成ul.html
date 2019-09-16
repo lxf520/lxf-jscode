@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{
+            list-style: none;
+            float: left;
+            height: 30px;
+            background-color: aqua;
+            margin: 2px;
+        }
+        a{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+        <!-- 通过DOM操作在页面中创建ul标签，ul标签中存放3个li标签，
+        要求给每个li标签都添加点击事件，当标签被点击的时候弹出标签的内容和当前的索引。
+        [要求]用两种方式来实现 -->
+        <div id="box"></div>
+        <script>
+            window.onload = function(){
+                var oBox = document.getElementById("box");
+                var oUl = document.createElement("ul");
+                oBox.appendChild(oUl);
+                for(var i=0; i<6 ; i++){
+                    var oLi = document.createElement('li');
+                    oUl.appendChild(oLi);
+
+                    oLi.innerHTML = `<a> 把啦啦${i+1} </a>`;
+
+                }
+                var oLis = document.getElementsByTagName('li');
+                for(let i=0; i<oLis.length ; i++){
+                    oLis[i].index = i;
+                    oLis[i].onclick = function(){
+                        var res = this.innerText;
+                        var num = this.index;
+                        console.log(res);
+                        alert(`我是第${num+1}个，${res}`)
+                    }
+                }
+
+
+            }
+        </script>
+</body>
+</html>

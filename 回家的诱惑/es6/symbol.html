@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- symbol符号类型的基本使用 -->
+    <!-- 特点： 符号类型是独一无二的 -->
+    <script>
+        let s3 = Symbol('s3');
+        console.log(s3);
+        // 把符号类型作为对象的key
+        let age = 18;
+        bg = 'backgroundColor';
+        let o = {
+            name : 'zs',
+            age,        //增强写法
+            [bg] : 'red',
+            [s3] : '啦啦啦'
+        }
+        console.log(o);
+        console.log(o[s3]);
+        
+        // 符号类型的特点： 符号类型的键值对是私有的，不可以被枚举
+        for (const key in o) {
+            console.log(key,o[key]);
+        }
+
+        //Symbol.for 在创建方法之前，会先在全局变量查找是否存在已经注册的数据存在就直接使用，
+        //不存在会创建一个全局变量的数据，并在全局范围对该数据注册
+        var s5 = Symbol.for('hello');
+        var s6 = Symbol.for('hello');
+        console.log(s5==s6);
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 40px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <button>按钮</button>
+    <script>
+        var btn = document.getElementsByTagName("button")[0];
+        /*生成随机数，可定义最小值和最大值 */
+        function random(min,max) {
+            return parseInt(Math.random() * (max + 1 - min) + min);
+        }
+        /* 生成一个rgb颜色*/
+        function getColor(flag) {
+            var r = random(0,255);
+            var g = random(0,255);
+            var b = random(0,255);
+            /* 传入参数为true返回带透明度的，否则不带透明度*/
+            return flag ?   `rgb(${r},${g},${b},${Math.random().toFixed(2)})` : `rgb(${r},${g},${b})`;
+        }
+        console.log(getColor());
+
+
+        btn.onclick = function () {
+
+            for (var i = 0; i < 10; i++) {
+                var color = getColor(true);
+                console.log(color);
+
+                var tag = document.createElement("div");    //创建标签
+                tag.innerHTML = `第${i}个div`;               //添加内容
+
+                tag.style.backgroundColor = color;          //改变样式
+
+                document.body.appendChild(tag);             //插入页面
+            }
+        }
+    </script>
+</body>
+
+</html>

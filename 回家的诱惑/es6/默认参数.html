@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn(a,b=0){
+            // x = a || 0;
+            // y = b || 0;
+            x = a;
+            y = b;
+            console.log(x,y);
+            
+        }
+        fn(2,5);
+        console.log(fn.length); //期望用户传递参数的个数
+        
+        // 剩余参数
+        function f(...abc){
+            console.log(abc);
+            
+        }
+        console.log(f(1,2,3,4));
+         
+
+        
+         
+         
+    </script>
+</body>
+</html>

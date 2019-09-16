@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            margin-left: 50px;
+        }
+
+        table {
+            margin-top: 20px;
+            margin-left: 50px;
+            width: 600px;
+            border: 1px solid #000;
+            border-collapse: collapse
+        }
+
+        th {
+            border: 1px solid #000;
+        }
+
+        td {
+            border: 1px solid #000;
+            text-align: center
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <label for="name">姓名</label>
+        <input type="text" id="name">
+
+        <label for="author">作者</label>
+        <input type="text" id="author">
+
+        <label for="address">地址</label>
+        <input type="text" id="address">
+
+        <label for="score">战力</label>
+        <input type="text" id="score">
+
+        <button id="add">添加</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>作者</th>
+                <th>地址</th>
+                <th>战力</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>1</td>
+                <td>李寻欢</td>
+                <td>古龙</td>
+                <td>神剑山庄</td>
+                <td>100</td>
+                <td>删除</td>
+            </tr> -->
+        </tbody>
+    </table>
+    <script>
+        var arr = [{
+            name: "李寻欢",
+            author: "古龙家族",
+            address: "神剑山庄",
+            score: "100"
+        }, {
+            name: "张无忌",
+            author: "金庸家族",
+            address: "光明顶",
+            score: "80"
+        }, {
+            name: "东方不败",
+            author: "金庸家族",
+            address: "黑木崖",
+            score: "99"
+        }, {
+            name: "胡一刀",
+            author: "金庸家族",
+            address: "雪谷",
+            score: "98"
+        }, {
+            name: "袁紫衣",
+            author: "金庸家族",
+            address: "雪谷",
+            score: "88"
+        }];
+        var oTbody = document.getElementsByTagName("tbody")[0];
+
+        //    数据渲染
+        function render(data) {
+            oTbody.innerHTML = data.map(function(ele, index) {
+                var html =
+                    `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${ele.name}</td>
+                <td>${ele.author}</td>
+                <td>${ele.address}</td>
+                <td>${ele.score}</td>
+                <td><button>删除</button></td>
+            </tr>
+            `
+                return html;
+            }).join("");
+            // console.log(result);
+        }
+
+        render(arr);
+
+        var oName = document.getElementById("name");
+        var oAuthor = document.getElementById("author");
+        var oAddress = document.getElementById("address");
+        var oScore = document.getElementById("score");
+        var oAdd = document.getElementById("add");
+
+        // 方法1：先把数据插入数组，再对数据进行渲染
+        oAdd.onclick = function(){
+            var o = {
+                name : oName.value,
+                author : oAuthor.value,
+                address : oAddress.value,
+                score : oScore.value
+            };
+            arr.push(o);
+            render(arr);
+        }
+        
+        
+        var oDel = document.getElementsByTagName('button');
+        var tr = document.getElementsByTagName('tr');
+       for(var i=1 ; i< oDel.length ; i++){
+           oDel[i].onclick = function(){
+            //    oBtn[this.index].parentElement.removeChild(oBtn[this.index]);
+            oTbody.removeChild(this.parentNode.parentNode);
+
+            
+           }
+       }
+
+        // 方式2：直接插入新的数据
+        // var count = arr.length;
+        // oAdd.onclick = function() {
+        //     /* 003-当点击按钮的时候获取输入框中的数据 */
+        //     count++;
+        //     /* 004-根据数据创建tr标签 */
+        //     /* 005-把标签插入到页面中显示出来 */
+
+        //     var oTr = document.createElement("tr");
+        //     oTr.innerHTML = `
+        //      <td>${count}</td>
+        //      <td>${oName.value}</td>
+        //      <td>${oAuthor.value}</td>
+        //      <td>${oAddress.value}</td>
+        //      <td>${oScore.value}</td>
+        //      <td><button>删除</button></td>
+        //     `
+        //     oTbody.appendChild(oTr);
+
+        // }
+    </script>
+</body>
+
+</html>

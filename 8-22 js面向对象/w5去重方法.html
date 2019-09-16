@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <!-- [5] 为数组扩展一个去重的方法，要求所有数组都能够调用该方法。 -->
+    <script>
+        Array.prototype.unique = function () {
+            var quchong = [];
+            var arr = this;
+            for (var i = 0; i < arr.length; i++) {
+                if (quchong.indexOf(arr[i]) == -1) {
+                    quchong.push(arr[i]);
+                }
+            }
+            return quchong
+        }
+
+        var a = [1,2,3,1,4];
+        console.log( a.unique() );
+
+        // 最简单的去重方法
+        // function f(arr){
+        //     var temp = [];
+        //     arr.forEach(ele => {
+        //         if(!temp.includes(ele)){
+        //             temp.push(ele)
+        //         }
+        //     });
+        //     return temp;
+        // }
+
+    </script>
+
+</body>
+
+</html>

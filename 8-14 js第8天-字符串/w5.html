@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 封装函数，该函数接收两个参数(对象和路径),要求提取对象中的数据拼接为URL路径并返回
+        如：给定对象 var  o = {name:"zs",age:19,password:"asdsbdh"}
+        如：给定路径 http://xxx.com
+        求：http://xxx.com?name=zs&age=19&password=asdsbdh -->
+
+    <script>
+        var o = {
+            name: "zs",
+            age: 19,
+            password: "asdsbdh"
+        }
+
+        function returnUrl(o, src) {
+            var arr = [];
+            for (var key in o) {
+                arr.push(`${key}=${o[key]}`);
+            }
+            console.log(arr);
+            
+            var s = arr.join('&');
+            // console.log(arr);
+            // console.log(s);
+
+            var res = `${src}?${s}`;
+            console.log(res);
+            
+        }
+
+        returnUrl(o,'http://xxx.com');
+    </script>
+</body>
+
+</html>

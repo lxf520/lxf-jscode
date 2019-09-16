@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 1000px;
+            height: 1000px;
+            margin: 10px auto;
+        }
+
+        #box tr td {
+            width: 150px;
+            height: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <table border="1" cellpadding="0" cellspacing="0">
+            <caption>成绩表</caption>
+            <thead>
+                <td>学号</td>
+                <td>语文</td>
+                <td>数学</td>
+                <td>英语</td>
+                <td>总成绩</td>
+                <td>备注</td>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <!-- 1）先计算每个学生的总成绩 
+    2）根据总成绩排名 
+    3）计算单科第一名，并输出学号  -->
+    <script>
+        var arr = [{
+                index: 2,
+                chinese: 89,
+                math: 78,
+                english: 120,
+                sum: '',
+                extra: ''
+            },
+            {
+                index: 1,
+                chinese: 105,
+                math: 62,
+                english: 118,
+                sum: '',
+                extra: ''
+            },
+            {
+                index: 3,
+                chinese: 86,
+                math: 64,
+                english: 80,
+                sum: '',
+                extra: ''
+            },
+
+            {
+                index: 4,
+                chinese: 78,
+                math: 99,
+                english: 91,
+                sum: '',
+                extra: ''
+            },
+            {
+                index: 5,
+                chinese: 107.5,
+                math: 97,
+                english: 70,
+                sum: '',
+                extra: ''
+            },
+            {
+                index: 6,
+                chinese: 112,
+                math: 61,
+                english: 92,
+                sum: '',
+                extra: ''
+            },
+            {
+                index: 7,
+                chinese: 101,
+                math: 79,
+                english: 104,
+                sum: '',
+                extra: ''
+            },
+            {
+                index: 8,
+                chinese: 71,
+                math: 72,
+                english: 105,
+                sum: '',
+                extra: ''
+            },
+            {
+                index: 9,
+                chinese: 56,
+                math: 68,
+                english: 61,
+                sum: '',
+                extra: ''
+            },
+            {
+                index: 10,
+                chinese: 98,
+                math: 83,
+                english: 77,
+                sum: '',
+                extra: ''
+            },
+        ]
+        var oDiv = document.getElementById("box");
+        var oTbody = document.getElementsByTagName("tbody")[0];
+        // 计算总分
+        var sum;
+        arr.map(function (ele, index) {
+            ele.sum += ele.chinese + ele.math + ele.english;
+        });
+        // 排序
+        arr.sort(function (a, b) {
+            return b.sum - a.sum;
+        })
+        // 语文数组
+        var chineseArr = [];
+        var mathArr = [];
+        var englishArr = [];
+        arr.forEach(function (ele, index) {
+            chineseArr.push(ele.chinese);
+            mathArr.push(ele.math);
+            englishArr.push(ele.english);
+        })
+        console.log(chineseArr);
+
+        // 比单科最高分
+        function compare(arr) {
+            var max = arr[0];
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] > max) {
+                    max = arr[i];
+                }
+            }
+            var top = arr.indexOf(max);
+            return top;
+        }
+
+        var m = compare(mathArr);
+        var c = compare(chineseArr);
+        var e = compare(englishArr);
+
+        arr.forEach(function(ele,index){
+            arr[m].extra = "数学最高";
+            arr[c].extra = "语文最高";
+            arr[e].extra = "英语最高";
+
+        })
+
+        oTbody.innerHTML = arr.map(function (ele, index) {
+            return `<tr>
+                <td>${ele.index}</td>
+                <td>${ele.chinese}</td>
+                <td>${ele.math}</td>
+                <td>${ele.english}</td>
+                <td>${ele.sum}</td>
+                <td>${ele.extra}</td>
+            </tr>`
+        }).join("");
+    </script>
+</body>
+
+</html>

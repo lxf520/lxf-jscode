@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 尝试自己封装格式化时间的函数。    
+        要求：
+        (1) 该函数接收一个参数，此参数可以是Date类型的日期对象，也可以是时间戳类型。
+        (2) 该函数的功能是把时间格式化为 2019年5月5日 15：15：21：200  星期五 并返回。 
+    Thu Aug 15 2019 10:54:38 GMT+0800 (中国标准时间)
+    -->
+    <script>
+        function data(time) {
+            var day;
+            if( typeof(time) == 'number' ){
+                 day = new Date(time);
+
+            }else{
+               var arr = time.split(' ');
+               console.log(arr);
+                
+            }
+            return day;
+        }
+
+        console.log( data('Thu Aug 15 2019 10:54:38 GMT+0800') );
+
+
+
+        
+        
+    </script>
+</body>
+
+</html>

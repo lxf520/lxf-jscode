@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 已知字符串 “a,a,b,c,c,d” 编程实现以下功能。
+        * 统计每个字符出现的次数，结果显示 a：2、b：1、c：2、d：1
+        * 去掉重复的字符，使结果显示 abcd -->
+    <script>
+        var ary = "a,a,b,c,c,d";
+        statisticNum(ary);
+
+        function statisticNum(ary) {
+            var arr = ary.split(',');
+            var obj = {};
+            console.log(arr);
+
+            // for (var i = 0; i < arr.length; i++) {
+            //     var key = arr[i];
+
+            //     if (obj[key]) {
+            //         //对象中有这个字母
+            //         obj[key]++;
+            //     } else {
+            //         //对象中没有这个字母,把字母加到对象中
+            //         obj[key] = 1;
+            //     }
+            // }
+            arr.forEach(element => {
+                var key = element;
+
+                if(obj[element]){
+                    obj[element]++;
+                }else{
+                    obj[element] = 1;
+                }
+            });
+
+            var res = '';
+            for (var key in obj) //遍历这个对象
+            {
+                res += key + ":" + obj[key] + "、";
+            }
+            console.log(res);
+
+            var newArr =[];
+            for(let i=0 ; i<arr.length ; i++){
+                if( arr.indexOf(arr[i]) == i ){
+                    newArr.push(arr[i]);
+                }
+            }
+            return newArr;
+            console.log(newArr);
+            
+            
+        }
+    </script>
+</body>
+
+</html>

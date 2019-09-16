@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num">
+    <button>查询</button>
+    <script>
+        var num = document.getElementById("num");
+        var btn = document.getElementsByTagName("button")[0];
+
+        btn.onclick = function(){
+            var n = num.value;
+            switch(n){
+                case "1":
+                    console.log("今天是星期一，我今天要上班");
+                break;
+                case "2":
+                    console.log("今天是星期二，我今天要上班");
+                break;
+                case "3":
+                    console.log("今天是星期三，我今天要上班");
+                break;
+                case "4":
+                    console.log("今天是星期四，我今天要上班");
+                break;
+                case "5":
+                    console.log("今天是星期五，我今天要上班");
+                break;
+                case "6":
+                    console.log("今天是星期六，我今天要看电影");
+                break;
+                case "7":
+                    console.log("今天是星期日，今天睡懒觉");
+                break;
+                default:break;
+                
+            }
+        }
+    </script>
+</body>
+</html>

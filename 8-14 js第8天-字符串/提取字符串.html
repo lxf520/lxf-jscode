@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var str = "https://coll.jd.com/list.html?sub=11854&sort=sort_commentcount_desc&page=1&JL=4_5_0";
+        var o ={};
+
+        function f(url){
+            var index = str.indexOf('?')+1; //找到问号的下标，切掉
+            var txt = str.slice(index);
+            var smallTxt = txt.split('&');
+            for(var i =0; i< smallTxt.length ;i++){
+                var small = smallTxt[i].split('=');
+                console.log(small);
+                
+                // var key = small[0];
+                // var value = small[1];
+                o[ small[0] ] = small[1];
+            }
+            return o;
+        }
+        var lll =  f(str);
+        console.log(lll);
+        
+    </script>
+</body>
+
+</html>

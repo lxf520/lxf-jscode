@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person{
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            showName(){
+                console.log('姓名'+ this.name );
+            }
+            showAge(){
+                console.log('年龄'+ this.age);
+            }
+            static showInfo(){
+                console.log('我是静态方法');
+            }
+        }
+
+/* 补充： 使用extend关键字继承父类的时候，会把父类的静态方法也继承过来  */
+        class Student extends Person{
+            constructor(school,className,name,age){
+
+/*需要先写super声明要继承的父类的原型成员*/
+                super(name,age);
+
+                this.school = school;
+                this.className = className;
+            }
+            read(){
+                console.log('好好学习');
+            }
+        }
+        let p = new Person('zs',13);
+        let stu1 = new Student('海大','caiwu','dx',18);
+        console.log(stu1);
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 500px;
+            height: 50px;
+        }
+    </style>
+
+    <script src="./jquery-3.4.1.js"></script>
+</head>
+
+<body>
+
+    <div class="item" title='标题' xx='搜索'></div>
+    <script>
+        $(function () {
+            //   属性节点操作
+            // 1-读取
+            console.log( $("div").attr("class") );
+             
+            //  2-添加
+            console.log( $("div").attr("class",'amazing') );
+            console.log( $("div").attr("lxf",'xddx') );
+             
+            //  3-删除属性节点
+            $("div").removeAttr('lxf');
+
+            // 可以多个属性一起设置
+            $("div").attr({
+                'a': '111',
+                'b': '222',
+                'c': '333'
+            })
+
+
+        })
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.4.1.js"></script>
+    <style>
+        body{
+            height: 2000px;
+        }
+        div{
+            width: 100px;
+            height: 500px;
+            position: fixed;
+            top: 50%;
+            right: 10px;
+            margin-top: -250px;
+            background-color: #192;
+            opacity: 0;
+        }
+        span{
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            float: right;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div><span>X</span></div>
+    <script>
+        $(function(){
+            setTimeout(function(){
+                $("div").css("opacity",'1')
+            },1000)
+        })
+        $("span").click(function(){
+            // $("div").hide(1000)
+            $(this).parent().hide(2200)
+        })
+    </script>
+</body>
+</html>

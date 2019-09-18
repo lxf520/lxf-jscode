@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .class1{
+            width: 200px;
+            height: 100px;
+            background-color: #4b9
+        }
+        .class2{
+            width: 500px;
+            height: 200px;
+            background-color: rgb(218, 96, 80);
+        }
+        .class3{
+            width: 500px;
+            height: 200px;
+            background-color: rgb(218, 214, 24);
+        }
+    </style>
+    <script src="./jquery-3.4.1.js"></script>
+</head>
+<body>
+    <div>我是div</div>
+    <script>
+
+        $(function(){
+            //jq class相关操作
+            //addClaass | hasClass  | removeClass | toggleClass
+
+            方式1
+            $('div').addClass('class2')
+                    .addClass('class1')
+                    .addClass('class3')
+
+            //方式2
+            $('div').addClass('class1 class2 class3 q a');
+
+            // 2 hasClass()
+            console.log( $('div').hasClass('a')  );
+
+            // 3 removeClass()
+            $("div").removeClass('q a')
+
+            // 4 toggleClass()
+            $("div").toggleClass('class1 box')
+        })
+
+        var oDiv = document.querySelector('div');
+        oDiv.className = 'class1'
+    </script>
+</body>
+</html>

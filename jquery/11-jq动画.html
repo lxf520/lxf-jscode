@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(0, 0, 0);
+        }
+        p{
+            width: 100px;height: 100px;
+            background-color: red;
+        }
+    </style>
+    <script src="./jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <div id="box"></div>
+    <!-- <p>而非的快乐九分裤IE的时间
+        第三方但是附加贷款自己覅
+        但是发发发
+    </p> -->
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>切换</button>
+
+    <button>展开</button>
+    <button>收起</button>
+    <button>切换</button>
+
+    <button>淡入</button>
+    <button>淡出</button>
+    <button>切换</button>
+    <button>淡入淡出到</button>
+
+
+    <script>
+        // 显示和隐藏动画
+        // $().show(speed,callBack)
+        // $().hide(speed,callBack)
+        // $().toggle(speed,callBack)
+
+        $("button:eq(0)").click(function(){
+            $("div").show(2000,()=>console.log('show-end'))
+        })
+        $("button:eq(1)").click(function(){
+            $("div").hide(2000,()=>console.log('hide-end'))
+        })
+        $("button:eq(2)").click(function(){
+            $("div,p").toggle(2000,()=>console.log('toggle-end'))
+        })
+
+        // 展开和收起
+        // $().slideDown(speed,callBack)
+        // $().slideUp(speed,callBack)
+        // $().slideToggle(speed,callBack)
+        $("button:eq(3)").click(function(){
+            $("div").slideToggle(2000)
+        })
+        $("button:eq(4)").click(function(){
+            $("div").slideUp(2000)
+        })
+        $("button:eq(5)").click(function(){
+            $("div,p").slideToggle(2000)
+        })
+
+        // 淡入和淡出
+        // $().fadeIn(speed,callBack)
+        // $().fadeOut(speed,callBack)
+        // $().fadeToggle(speed,callBack)
+        $("button:eq(6)").click(function(){
+            $("div").fadeIn(2000)
+        })
+        $("button:eq(7)").click(function(){
+            $("div").fadeOut(2000)
+        })
+        $("button:eq(8)").click(function(){
+            $("div,p").fadeToggle(2000)
+        })
+        $("button:eq(9)").click(function(){
+            $("div,p").fadeTo(2000,0.5)
+        })
+
+
+        
+    </script>
+    <p></p>
+    <script>
+        // 自定义动画
+        $("p").animate({
+            "width": "400px",
+            'height': '400px'
+        },3000,function () {console.log('---');
+          }).slideUp(1000).delay(1000).slideDown(2000)
+    </script>
+
+</body>
+
+</html>

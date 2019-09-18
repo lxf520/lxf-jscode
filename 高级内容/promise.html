@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*回调地狱*/
+        setTimeout(() => {
+            console.log('task1');
+
+            setTimeout(() => {
+                console.log('task2');
+
+                setTimeout(() => {
+                    console.log('task3');
+
+                }, 1000);
+            }, 2000); 
+        }, 10);
+
+
+        /*Promise接收一个回调函数，在改回调函数中提供两个参数  resolve， reject*/
+        /*resolve，reject本身也是函数，当异步任务执行完毕时，如果成功调用resolve转到then的第一个回调函数，如果失败，调用reject转到第二个回调函数继续执行*/
+        new Promise(function(resolve,reject){
+            setTimeout(() => {
+                console.log('task1');
+                resolve();          //成功后执行第一个函数，失败执行第二个函数
+                //reject();         成功后执行第二个函数，失败执行第一个函数
+            },2000)
+        }).then(function(){
+            console.log('task1--成功');
+        },function(){
+            console.log('task1--失败');
+
+        })
+
+
+        new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                console.log('task1');
+                resolve();
+            }, 2000)
+        })
+            .then(function () {
+                return new Promise(function (resolve, reject) {
+                    setTimeout(() => {
+                        console.log('task2');
+                        resolve();
+                    }, 1000);
+                })
+            })
+            .then(function () {
+                return new Promise(function (resolve, reject) {
+                    setTimeout(() => {
+                        console.log('task3');
+                        resolve();
+                    }, 1000);
+                })
+            })
+            .then(function () {
+                return new Promise(function (resolve, reject) {
+                    setTimeout(() => {
+                        console.log('task4');
+                        // resolve();
+                    }, 1000);
+                })
+            })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 500px;
+            height: 50px;
+        }
+    </style>
+
+    <script src="./jquery-3.4.1.js"></script>
+</head>
+
+<body>
+
+
+    <div id="box">
+
+        <span>465</span>
+        <span>465</span>
+    </div>
+    <div class="box">
+        <span>465</span>
+        <span>465</span>
+        <span>465</span>
+    </div>
+    <div class="box">
+
+        <span>465</span>
+        <span>465</span>
+    </div>
+
+
+    <script>
+        $(function () {
+            //    链式调用相关的方法  
+            // add 把后面选择器的结果添加到前面的jq对象中
+            // addback 把当前对象和前一个合并
+            // end 返回到上一个破坏性对象
+            $("#box").css("border", "1px solid #195").add('span').css('background', 'pink')
+
+            console.log($("#box").css("border", "1px solid #195").add('span').css('background', 'pink').end());
+
+
+            //遍历jq实例对象，拿到每个标签，检查当前标签是否满足条件，如果return true，如果满足就把当前标签 保存下来，不满足就忽略
+            var res = $('.box').filter(function(){
+
+                console.log(this);
+                
+                return $('span',this).length == 2;
+            })
+            
+            console.log(res);
+            
+        })
+    </script>
+</body>
+
+</html>

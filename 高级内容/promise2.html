@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var p1 = new Promise(function(resolve,reject){
+            setTimeout(() => {
+                console.log('task1');
+                resolve()
+            }, 100);
+        })
+
+        var p2 = new Promise(function(resolve,reject){
+            setTimeout(() => {
+                console.log('task2');
+                resolve()
+            }, 100);
+        })
+
+        var p3 = new Promise(function(resolve,reject){
+            setTimeout(() => {
+                console.log('task3');
+                resolve()
+            }, 100);
+        })
+
+        /* 当所有的三个异步任务都执行完毕后，就转到then方法 */
+        Promise.all([p1,p2,p3])
+                .then(function(){
+                    console.log('----------');
+                })
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let O = (function(){
+            let name = 'zs';
+            let age = 18;
+
+            return {
+                getName(){
+                    return name;
+                },
+                getAge(){
+                    return age
+                },
+                setName(val){
+                    name = val
+                },
+                setAge(val){
+                    age = val
+                }
+            }
+// 变形
+            // function getName(){
+            //     return name
+            // }
+            // function getAge(){
+            //     return age
+            // }
+
+            // return {
+            //     getAge,
+            //     getName
+            // }
+
+// 变形
+            // let res = {
+            //     getName(){
+            //         return name;
+            //     },
+            //     getAge(){
+            //         return age
+            //     },
+            //     setName(val){
+            //         name = val
+            //     },
+            //     setAge(val){
+            //         age = val
+            //     }
+            // };
+            // return res
+        })();
+        console.log( O.getName() , O );
+        O.setAge(30);
+        console.log( O.getAge());
+        
+        
+    </script>
+</body>
+</html>

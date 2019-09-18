@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.4.1.js"></script>
+
+</head>
+
+<body>
+    <li>li1</li>
+    <li>li2</li>
+    <li>li3</li>
+    <li>li4</li>
+    <li>li5</li>
+    <script>
+        // each方法
+        // 在回调函数中返回false结束循环
+
+        // $.map === arr.map  没啥子区别
+        $(function () {
+            var obj = {
+                name: 'zs',
+                age: 18
+            }
+            var jq = $("li");
+            for (let i = 0; i < jq.length; i++) {
+                console.log(jq[i]);
+            }
+
+            var arr = ['demoA', 'demoB'];
+            // 遍历数组和对象
+            $.each(arr, function (index, value) {
+                console.log(index, value);
+            })
+
+            $.each(obj, function (index, value) {
+                console.log(index, value);
+            })
+
+
+            // 遍历JQ实例对象
+            $.each($("li"), function (index, value) {
+                console.log(index, value);
+            })
+            $("li").each(function (index, ele) {
+                console.log(this);
+
+            })
+        })
+    </script>
+</body>
+
+</html>

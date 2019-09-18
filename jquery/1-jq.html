@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <div id="box">嘻嘻嘻</div>
+    <button>123</button>
+    <script>
+        1
+        $(document).ready(function () {
+            console.log('1');
+            
+        })
+        // 2
+        $().ready(function(){
+            console.log('2');
+            
+        })
+        // 3
+        $(function(){
+            console.log('3');
+
+            $("#box").text('天');
+            console.log( $("#box")[0] );
+            
+        })
+
+        /*jquery对象和原始 DOM标签*/
+        window.onload = function(){
+            var oDiv = document.getElementById('box');
+            $(oDiv).text('jq')                      //原始DOM转jq对象
+            oDiv.innerText = '夏天'
+        }
+
+        $(function(){
+            $('#box')[0].innerText = '原始'          //jq对象转原始DOM
+            $('#box').text('蓝天');
+        })
+
+        // 转化
+
+    </script>
+
+</body>
+
+</html>

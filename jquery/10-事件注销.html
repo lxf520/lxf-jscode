@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 500px;
+            height: 50px;
+        }
+    </style>
+
+    <script src="./jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <div class="item" title='标题' style="width: 200px;height: 200px;background-color: pink"></div>
+    <button>添加事件</button>
+    <button>注销事件</button>
+
+    <button>自动触发</button>
+
+
+    <script>
+        事件注销
+        $(function () {
+            function handle() {
+                console.log('div被点击B');
+            }
+
+            $("button").first().click(() => {
+                console.log('添加事件');
+                $("div").on("click", function () {
+                    console.log('点击事件A');
+                })
+                $("div").on("click", handle)
+            })
+
+            $("button:eq(1)").click(() => {
+                console.log('注销事件');
+                $("div").off("click");
+                $("div").off("click", handle)
+            })
+        })
+    </script>
+    <script>
+        事件自动触发
+        $(function () {
+           var count = 0;
+           $("button").last().click(()=>{
+               count++;
+               console.log(count);
+           })
+
+           /*自动 触发事件*/
+           setInterval(function(){
+               $("button").trigger("click");
+           },1000)
+        })
+    </script>
+    <script>
+            // 自定义事件
+            $(function () {
+                $("button").last().on("xxx",function(){
+                    console.log('---------',this);
+                    
+                })
+            // 自定义事件只能代码触发
+                $("button").trigger("xxx");
+            }) 
+    </script>
+
+
+</body>
+
+</html>

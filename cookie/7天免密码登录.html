@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./Cookie.js"></script>
+    <style type="text/css">
+        body {
+            background-color: rgb(177, 208, 224);
+            font: normal 12px Trebuchet MS;
+            color: #000;
+        }
+        
+        form {
+            width: 220px;
+            padding: 10px;
+            background-color: #DDEEF6;
+            box-shadow: 0px 0px 10px 0px #888888;
+            border: 1px solid #DDEEF6;
+            border-radius: 6px;
+            margin: auto;
+        }
+        
+        .roundedCorners-textbox {
+            border: 1px solid #999;
+            width: 160px;
+        }
+        
+        .checkbox {
+            margin-left: 30px;
+            border: 1px solid #999;
+            width: 20px;
+        }
+    </style>
+    <script src="cookie.js"></script>
+</head>
+
+<body>
+    <form>
+        <label>账号</label>
+        <input id="username" name="username" type="text" /><br /><br />
+        <label>密码</label>
+        <input id="password" name="password" type="text" /><br /><br />
+        <label><input id="checkbox" type="checkbox" class="checkbox" />
+     7天免登录</label>
+        <br /><br />
+        <input type="submit" value="确定" id="btnSubmit" />
+        <input type="reset" value="清空" />
+    </form>
+
+    <!-- 01-先获取确定按钮，然后添加点击事件 -->
+    <!-- 02-当点击事件触发的时候应该获取用户名和密码，发送网络请求登录 -->
+
+    <!-- 03-如果用户勾选了免登录，那么需要把用户名和密码保存到Cookie中设置7天的有限期-->
+    <!-- 04-当下次再打开当前页面的时候，检查是否有保存的Cookie数据，如果有那么就取出来直接发请求。 -->
+
+    <!-- 思路：当页面加载完就应该先检查是否有Cookie数据，如果有那么就取出来发送网络请求给服务器 -->
+    <!-- 如果登录成功，那么就直接跳转，否则才显示登录页面 -->
+   
+    <script>
+        function netWork(usernameT,passwordT){
+            let str = `username=${usernameT}&password=${passwordT}`;
+            let xhr = new XMLHttpRequest;
+            xhr.open('get','server/login.php?' + str);
+            xhr.send();
+            xhr.onload = ()=>{
+                if(xhr.status == 200){
+                    let obj = JSON.parse(xhr.response);
+
+                    if(obj.status == 'success'){
+                        // 选项框勾选的话创建Cookie
+                        if(oCheckbox.checked){
+                            Cookie.set('username',usernameT,7);
+                            Cookie.set('password',passwordT,7);
+                        }
+
+                        window.location.href = './登录(首页).html'
+                    }else{
+                        alert(obj.data);
+                    }
+                }
+            }
+        }
+// +7天免登录
+        let valUsername = Cookie.get('username');
+        let valPassword = Cookie.get('password');
+        if(valUsername && valPassword){
+            netWork(valUsername,valPassword);
+        }
+
+        let oBtn = document.getElementById('btnSubmit');
+        let oUsername = document.getElementById("username");
+        let oPassword = document.getElementById("password");
+        let oCheckbox = document.getElementById("checkbox");
+
+        oBtn.onclick = event=>{
+            event.preventDefault();
+
+            let usernameVal = oUsername.value.trim();
+            let passwordVal = oPassword.value.trim();
+
+            if(!usernameVal || !passwordVal){
+                alert('用户名和密码不能为空');
+                return
+            }
+            netWork(usernameVal,passwordVal);
+        }
+    </script>
+</body>
+
+</html>

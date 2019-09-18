@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /* 1提供构造函数*/
+    function MakePhone(){}
+
+    /* 2设置构造函数 的原型对象*/
+    MakePhone.prototype = {
+        constructor: MakePhone,
+        address: '广东海洋大学',
+        sendMsg: function(){
+            console.log('上学');
+        },
+        callphone: function(){
+            console.log('喝奶茶');
+        }
+    }
+
+    //3提供工厂
+    MakePhone.factory = function(type,options){
+        // 应该要返回实例对象
+        if(!MakePhone[type]){
+            console.log('`${type}品牌还没合作`');
+            return;
+        }
+        MakePhone[type].prototype = MakePhone.prototype;
+        var product = new MakePhone[type](options);
+        return product;
+    }
+
+    // 4建立合作关系
+    MakePhone.xiaomi = function(options){
+        this.color = '金色',
+        this.price = '1220'
+    }
+    MakePhone.huawei = function(options){
+        this.color = '白色',
+        this.price = '12200'
+    }
+    MakePhone.apple = function(options){
+        MakePhone.apple.count += 1;
+        this.ID = MakePhone.apple.count;
+        this.BG = options.bg;
+        this.color = '黑色';
+        this.price = '120';
+    }
+    MakePhone.apple.count = 0;
+
+    // 5创建得到实例对象
+    var xiaomiA = MakePhone.factory('xiaomi');
+    var huaweiA = MakePhone.factory('huawei');
+    var iphone8 = MakePhone.factory('apple',{bg:'max'});
+
+
+
+    console.log(xiaomiA,huaweiA,iphoneX);
+    console.log(iphone9,iphone8);
+    
+
+
+    /*工厂模式套路*/
+    /* 提供空的构造函数 */
+    /* 设置构造函数的原型对象，设置通用的属性和方法 */
+    /* 在构造函数上添加工厂函数（核心） */
+    /* 在构造函数身上添加具体的方法  --建立合作关系 */
+    /* 调用 3、构造函数的工厂方法 */
+    </script>
+</body>
+</html>

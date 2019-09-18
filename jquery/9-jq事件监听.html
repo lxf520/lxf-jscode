@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 500px;
+            height: 50px;
+        }
+    </style>
+
+    <script src="./jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <button>按钮</button>
+    <div class="item" title='标题' style="width: 200px;height: 200px;background-color: pink"></div>
+    <div style="width: 200px;height: 200px;background-color: aqua"></div>
+    <div id="box" style="width: 300px;height: 200px;background-color: #195"></div>
+
+    <script>
+        $(function () {
+            $('button').on("click", function () {
+                console.log('按钮1被点击');
+            })
+            $("div").on('mouseenter', function () {
+                console.log('鼠标移入', this);
+            })
+            $("div").on('mouseleave', function () {
+                console.log('鼠标移除', this);
+            })
+
+            // 可以传参数
+            $("button").on('click', {
+                name: 'zs',
+                age: 18
+            }, function (e) {
+                console.log(e.data.name);
+                console.log(e);
+            })
+
+            //    移入移出事件
+            $("#box").hover(function () {
+                console.log('---移入');
+            },function(){
+                console.log('---移出');
+            })
+
+            // $("#box").hover(function () {
+            //     console.log('---移入 or 移除');
+            // })
+        })
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input {
+            width: 300px;
+            height: 30px;
+        }
+        
+        * {
+            list-style: none;
+            padding: 0;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="search">
+   
+    <script>
+        function fn(o){
+            console.log(o);
+            
+            let data = o.g || [];
+            let html = data.map((ele,index)=>{
+                return `<li>${index}: ${ele.q}</li>`
+            }).join('');
+
+            let oUl = document.getElementsByTagName('ul')[0] || document.createElement('ul');
+            oUl.innerHTML = html;
+            document.body.appendChild(oUl);
+        };
+
+        let oSearch = document.getElementById('search');
+        oSearch.oninput = function(){
+            console.log(oSearch.value);
+
+            // 创建script标签
+            let oScript = document.getElementById('ID');
+            if(oScript){
+                document.body.removeChild(oScript);
+            }
+
+             oScript = document.createElement('script');
+            oScript.id = 'ID';
+            oScript.src = "https://www.baidu.com/sugrec?callback=fn&prod=pc_hao123&wd=" + oSearch.value;
+            document.body.appendChild(oScript);
+            
+        }
+    </script>
+</body>
+
+</html>

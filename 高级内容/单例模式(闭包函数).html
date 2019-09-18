@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 第一次使用new的时候，先把实例对象保存起来。以后调用的时候总是把之前保存的实例对象返回 */
+        /* 实现方案1 全局变量  缺点： 全局变量可以在任何位置访问，因此该变量可能会被修改 */
+
+        /*方案2 静态成员  Person._instance*/
+
+        var Person = (function() {
+
+            var _instance;
+
+            return function() {
+                if (_instance) {
+                    console.log('把之前保存的实例对象返回，不在创建新的');
+                    return _instance;
+                }
+
+                _instance = this;
+                console.log('第一次创建实例对象');
+
+            }
+        })();
+
+        var p1 = new Person();
+        var p2 = new Person();
+
+
+
+    </script>
+</body>
+
+</html>

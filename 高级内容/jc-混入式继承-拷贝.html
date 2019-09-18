@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var o ={
+            name : 'zs',
+            age : 18,
+            sport : {
+                football : 'good'
+            }
+        }
+        var p = {
+            height : 180
+        }
+        let t ={};
+
+        /* 1 t获取o成员 */
+        t = o;
+
+        /* 2 浅拷贝 */
+        for(let key in o){
+            t[key] = o[key];
+        }
+
+        /*3 Object.assign(目标对象，源对象1，源对象2) */
+        Object.assign(t,o,p);
+
+        /*4 JSON间接处理*/
+        t = JSON.parse(JSON.stringify(o));
+
+        console.log(t);
+        
+
+    </script>
+</body>
+</html>

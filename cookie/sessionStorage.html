@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <button id="add">添加</button>
+        <button id="read">读取</button>
+        <button id="update">修改</button>
+        <button id="delete">删除</button>
+        <button id="clear">清空</button>
+    </div>
+    <script>
+        let oDiv = document.getElementsByTagName('div')[0];
+
+        oDiv.onclick = e => {
+            e = e || window.event;
+            console.log(e);
+            
+            switch (e.target.id) {
+                case 'add':
+                    sessionStorage.name = 'ws';
+                    sessionStorage.age = 18;
+                    break;
+                case 'read':
+                    console.log(sessionStorage);
+                    break;
+                case 'update':
+                    sessionStorage.setItem('name','pig')
+                    break;
+                case 'delete':
+                    sessionStorage.removeItem('age')
+                    break;
+                case 'clear':
+                    sessionStorage.clear();
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>

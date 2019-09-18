@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            list-style: none;
+            margin: 0;
+            padding-bottom: 0;
+        }
+        
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        .slider {
+            margin: 50px auto;
+            /* border: 1px solid #000; */
+            width: 700px;
+            height: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slider-box {
+            background: #dddddd;
+            width: 10000px;
+            height: 350px;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+        }
+        
+        .slider-box-item {
+            width: 700px;
+            height: 350px;
+            float: left;
+            font-size: 40px;
+            text-align: center;
+            line-height: 350px;
+        }
+        
+        .slider-box-item img {
+            width: 700px;
+            height: 350px;
+        }
+        
+        .slider-control {
+            position: absolute;
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+            top: 50%;
+            margin-top: -50px;
+            font-size: 60px;
+        }
+        
+        .prev {
+            margin-left: 20px;
+        }
+        
+        .next {
+            float: right;
+            margin-right: 20px;
+        }
+        
+        .slider-nav {
+            position: absolute;
+            right: 30px;
+            bottom: 10px;
+            height: 30px;
+        }
+        
+        .slider-nav-item {
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            float: left;
+            border-radius: 15px;
+            margin: 0 5px;
+            text-align: center;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+        }
+        
+        .active {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /* 主要的功能模块*/
+        /* (1) 创建标签和设置样式 */
+        /* (2) 设置让轮播图自动播放 */
+        /* (3) 点击标签的能够实现切换 */
+        /* (4) 点击原点(焦点)的时候切换*/
+        /* (5) 鼠标移入的时候停止自动播放，鼠标移除的时候恢复自动播放 */
+
+        class BannerManager {
+            constructor(data, root = document.body) {
+                this.index = 0;
+                this.root = root;
+                this.data = data;
+                this.slider = null;
+                this.sliderBox = null;
+                this.sliderControl = null;
+                this.sliderNav = null;
+                this.sliderItemWidth = 700;
+                this.len = this.data.length;
+            }
+            init() {
+                this.createHTML(); /* 创建this.slider */
+                this.root.appendChild(this.slider);
+
+                /* 设置让轮播图自动播放 */
+                // this.autoPlayer();
+                this.addClickEventHandler();
+                this.addClickEventHandlerWithSliderNavItem();
+
+            }
+            getColor() {
+                let r = parseInt(Math.random() * 255);
+                let g = parseInt(Math.random() * 255);
+                let b = parseInt(Math.random() * 255);
+                let a = (Math.random()).toFixed(2) * 1;
+                return `rgba(${r},${g},${b},${a})`
+            }
+            createHTML() {
+                this.sliderBox = document.createElement("ul");
+                this.sliderBox.className = "slider-box";
+                this.sliderBox.innerHTML = this.data.map((ele, index) => {
+                    return `<li class="slider-box-item" style="background:${this.getColor()}">${index + 1}</li>`
+                }).join("");
+
+                console.log(this.sliderBox);
+                this.sliderControl = document.createElement("div");
+                this.sliderControl.className = "slider-control";
+                this.sliderControl.innerHTML = `<span class="prev">&lt;</span> <span class="next">&gt;</span>`
+
+                this.sliderNav = document.createElement("ol");
+                this.sliderNav.className = "slider-nav";
+                this.sliderNav.innerHTML = this.data.map((ele, index) => {
+                    return `<li class="slider-nav-item">${index + 1}</li>`
+                }).join("");
+
+                this.slider = document.createElement("div");
+                this.slider.className = "slider";
+                this.slider.appendChild(this.sliderBox);
+                this.slider.appendChild(this.sliderControl);
+                this.slider.appendChild(this.sliderNav);
+                console.log(this.slider);
+            }
+            autoPlayer() {
+                /* 利用定时器来实现，每隔2秒就显示下一张图片 */
+                setInterval(() => {
+                    this.next();
+                }, 2000);
+            }
+            addClickEventHandler() {
+                this.sliderControl.onclick = (e) => {
+                    if (e.target.className == "prev") {
+                        console.log("prev");
+                        this.prev();
+                    } else if (e.target.className == "next") {
+                        console.log("next");
+                        this.next();
+                    }
+                }
+            }
+            next() {
+                this.index++;
+                if (this.index > this.len - 1) {
+                    this.index = 0;
+                }
+                this.sliderBox.style.left = -this.index * this.sliderItemWidth + "px";
+            }
+            prev() {
+                this.index--;
+                if (this.index < 0) {
+                    this.index = this.len - 1;
+                }
+                this.sliderBox.style.left = -this.index * this.sliderItemWidth + "px";
+            }
+            addClickEventHandlerWithSliderNavItem() {
+                /* 添加点击事件 */
+                Array.from(this.sliderNav.children).forEach((ele, index) => {
+                    let self = this;
+                    ele.index = index;
+                    ele.onclick = function() {
+                        /* 切换样式： */
+                        Array.from(self.sliderNav.children).forEach(ele => {
+                            ele.className = "slider-nav-item";
+                        })
+                        this.className = "slider-nav-item active";
+                        console.log(this.index);
+
+                        self.index = this.index;
+                        self.sliderBox.style.left = -self.index * self.sliderItemWidth + "px";
+                    }
+                })
+            }
+        }
+
+        var manager = new BannerManager([1, 2, 3, 4, 5]);
+        manager.init();
+    </script>
+</body>
+
+</html>

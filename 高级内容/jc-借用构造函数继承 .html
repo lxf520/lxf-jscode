@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype = {
+            constructor : Person,
+            showName : function(){
+                console.log(this.name);
+            },
+            showAge: function(){
+                console.log(this.age);
+            }
+        };
+        // var p1 = new Person();
+
+        /*提供学生构造函数*/
+        function Student(name,age,school,className){
+            this.school = school;
+            this.className = className;
+
+            /*在子构造函数中借用父构造函数来获取它的实例成员*/
+            Person.call(this,name,age);
+        }
+
+        /*组合继承： 构造函数继承（实例成员） + 原型式继承（原型成员）*/
+
+        Student.prototype = Person.prototype;
+        Student.prototype.read = function(){
+            console.log('萨达');
+            
+        }
+        var stu1 = new Student('xdx',12,'海大','经济');
+        console.log(stu1);
+        var stu2 = new Student('lxf',18,'hk','dk');
+        console.log(stu2);
+        
+    </script>
+</body>
+</html>

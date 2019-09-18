@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.4.1.js"></script>
+    <style>
+        *{padding: 0;margin: 0;list-style: none;}
+        .nav{
+            height: 40px;
+            width: 600px;
+            background-color: rgb(57, 110, 180);
+
+        }
+        .nav>li{
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            /* background-color: #195; */
+            float: left;
+        }
+        .nav>li:hover{
+            background-color: rgb(38, 210, 216);
+        }
+        .second{
+            display: none;
+        }
+        .nav>li li{
+            background-color: #195;
+            width: 200px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul class="nav">
+            <li>123
+                <ul class="second">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
+            </li>
+            <li>456
+                <ul class="second">
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                </ul>
+            </li>
+            <li>789
+                <ul class="second">
+                    <li>7</li>
+                    <li>8</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        $(".nav > li").hover(function(){
+            // $('.second').slideToggle(1000)          //不行，会一起动
+            $(this).children("ul").stop().slideToggle()
+
+        })
+    </script>
+</body>
+
+</html>

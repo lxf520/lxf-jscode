@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name,age){
+            this.name = name,
+            this.age = age
+        }
+        Person.prototype = {
+            constructor : Person,
+            showName : function(){
+                console.log(this.name);
+            },
+            showAge: function(){
+                console.log(this.age);
+            }
+        };
+        var p1 = new Person();
+
+        /*提供学生构造函数*/
+        function Student(){
+            this.school = '海大',
+            this.className = '点点客'
+        }
+
+        /*原型链继承，设置原型对象共享*/
+        /*核心思路： 设置子构造函数原型对象指向父构造函数的实例对象*/
+        /*继承效果： 能够获取父构造函数的原型成员 + 父构造函数实例对象的实例成员*/
+        /*缺陷：从父构造函数继承来的实例成员成为子构造函数实例对象的原型对象 */
+        Student.prototype = new Person('zs',16);
+        Student.prototype.read = function(){
+            console.log('萨达');
+            
+        }
+        var stu1 = new Student();
+        console.log(stu1);
+        
+    </script>
+</body>
+</html>

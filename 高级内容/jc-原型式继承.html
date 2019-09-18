@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(){
+            this.name = 'zs',
+            this.age = 18
+        }
+        Person.prototype = {
+            constructor : Person,
+            showName : function(){
+                console.log(this.name);
+            },
+            showAge: function(){
+                console.log(this.age);
+            }
+        };
+        var p1 = new Person();
+
+        /*提供学生构造函数*/
+        function Student(){
+            this.school = '海大',
+            this.className = '点点客'
+        }
+
+        /*原型式继承，设置原型对象共享*/
+        /*核心思路： 设置子构造函数原型对象指向父构造函数的原型对象*/
+        /*缺陷： 1、只能获取父构造函数的原型成员，而无法获取其实例成员 2、共享问题*/
+        Student.prototype = Person.prototype;
+        Student.prototype.read = function(){
+            console.log('萨达');
+        }
+        var stu1 = new Student();
+        
+    </script>
+</body>
+</html>

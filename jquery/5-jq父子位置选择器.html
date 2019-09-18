@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <div class="div">
+        <div>1</div>
+        <div>2</div>
+        <div id="sibling">3
+            <div id="xiaosi">4</div>
+            <div>5</div>
+        </div>
+        <div>6</div>
+        <span>7</span>
+        <span>8</span>
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </div>
+    <div id="p"></div>
+
+    <script>
+        $(function () {
+            // 获取父节点
+            $("#xiaosi").parent().css('background','red')
+
+            // 获取祖先节点
+            $("#xiaosi").parents().css('background','red')
+
+            //  获取祖先节点直到...节点为止
+            $("#xiaosi").parentsUntil('.div').css('background','red')
+
+            //  获取子节点
+            $(".div").children().css('background','red')
+            $(".div").children('span').css('background','red')
+
+            //  获取兄弟节点
+            $("#sibling").siblings().css('background','red')
+            $("#sibling").siblings('span').css('background','red')
+
+            //  获取后面所有的兄弟节点
+            $("#sibling").nextAll().css('background','red')
+            $("#sibling").next().css('background','red')
+            $("#sibling").nextUntil('span:eq(1)').css('background', 'red')
+
+
+            //  获取前面所有的兄弟节点
+            $("#sibling").prevAll().css('background','red')
+            $("#sibling").prev().css('background','red')
+            $("#sibling").prevUntil('span:eq(1)').css('background', 'red')
+        })
+    </script>
+</body>
+
+</html>

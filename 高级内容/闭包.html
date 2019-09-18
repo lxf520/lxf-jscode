@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 在返回数据之前先使用函数来进行二次包裹，返回包裹的函数 */
+        /* 结论：通过这种特定的结构可以间接的来访问函数内部的私有数据 */
+
+        /* 广义的闭包：某个作用域有了不属于自己的变量，一切函数都是闭包*/
+
+        
+        // 1闭包最简单的 形势
+        function f(){
+            var o ={
+                name : 'Zs'
+            }
+            return function(){
+                return o
+            }
+        };
+        var foo = f();
+        console.log(foo()===foo());
+        // foo() = f()();
+
+        // 结构调整变形
+        var foo = (function(){
+            var o ={
+                name : 'Zs'
+            }
+            return function(){
+                return o
+            }
+        })();
+
+
+    </script>
+</body>
+</html>

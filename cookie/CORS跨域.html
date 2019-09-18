@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* CORS 服务器需要对响应进行配置 */
+        // let xhr = new XMLHttpRequest();
+        // xhr.open("get", 'http://localhost/cookie/server/login.php?username=lw&password=123456', true);
+        // xhr.send();
+        // xhr.onload = () => {
+        //     if (xhr.status == 200 | xhr.status == 304) {
+        //         console.log(xhr.responseText);
+        //     }
+        // }
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("get", "http://wthrcdn.etouch.cn/weather_mini?city=广州", true);
+        xhr.send();
+        xhr.onload = () => {
+            if (xhr.status == 200 | xhr.status == 304) {
+                console.log(xhr.responseText);
+            }
+        }
+    </script>
+</body>
+
+</html>

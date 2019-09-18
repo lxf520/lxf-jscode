@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <!-- <div class="div">
+        <div>1</div>
+        <div>2</div>
+        <div>3
+            <div>4</div>
+            <div>5</div>
+        </div>
+        <div>6</div>
+        <div>7</div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </div> 
+    <div id="p"></div> -->
+
+    <a href="www.jd.com">21344</a>
+    <script>
+        $(function () {
+            // 并集选择器
+            // $(".div,#p").text('sad ');
+
+            //层级选择器
+            console.log($(".div>div"));
+
+            // 筛选选择器
+            // 获取第一个div
+            $(".div div:first").css('background','#190');
+            // 获取最后一个div
+            $(".div div:last").css('background','#190');
+
+            // 获取索引为3的div
+            $(".div div:eq(3)").css('background','#369');
+
+            // 获取除了索引为3之外的div
+            $(".div div:not(:eq(0))").css('font-size','30px');
+
+            
+            // 获取索引为奇数 | 偶数的所有li标签
+            $("#box li:even").css('background','yellow');
+            $("#box li:odd").css('background','pink');
+
+            //获取索引小于4的li标签
+            $("li:lt(4)").css("background",'#077')
+
+            //获取索引大于4的li标签
+            $("li:gt(4)").css("background",'#690')
+
+            // 属性选择器
+            $("a[href='www.jd.com']").css("background",'#077')
+        })
+
+
+
+    </script>
+</body>
+
+</html>

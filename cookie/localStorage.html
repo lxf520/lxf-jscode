@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <button id="add">添加</button>
+        <button id="read">读取</button>
+        <button id="update">修改</button>
+        <button id="delete">删除</button>
+        <button id="clear">清空</button>
+    </div>
+    <script>
+        /* 对比：local Storage  大小(20M)  有效期(永久)  基本用法*/
+        /* 保存 |  读取 | 删除 | 清空 */
+        let oDiv = document.getElementsByTagName("div")[0];
+        oDiv.onclick = function(e) {
+            e = e || window.event;
+            switch (e.target.id) {
+                case "add":
+                    // window.localStorage.setItem("name", "wc");
+                    // localStorage.setItem("age", 18);
+                    // localStorage.setItem("color", '黄');
+                    localStorage.name = "ws";
+                    localStorage.age = 18;
+                    localStorage.color = "红色";
+
+                    break;
+                case "read":
+                    // console.log(sessionStorage.getItem("name"));
+                    // console.log(sessionStorage.getItem("age"));
+
+                    console.log(localStorage.name);
+                    break;
+
+                case "update":
+                    localStorage.setItem("name", "旺财");
+                    break;
+
+                case "delete":
+                    localStorage.removeItem("age");
+                    break;
+                case "clear":
+                    localStorage.clear();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>

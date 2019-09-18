@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*发布者对象*/
+        var wj = {
+            name : 'wj',
+            user: [],
+            addObserver(observer){
+                this.user.push(observer);
+            },
+            removerObserver(observer){
+                var index = this.user.indexOf(observer);
+                if(index !== -1){
+                    this.user.splice(index,1);
+                }
+            },
+            hunger(){
+                console.log(' 我饿了-wj');
+                this.user.forEach(function(ele){
+                    ele();
+                })
+            }
+        }
+        /*订阅者对象*/
+        var zs = {
+            hunger_res(){
+                console.log('来啦');
+            }
+        }
+        var lw ={
+            hunger_res(){
+                console.log('舔狗啦啦啦啦');
+            }
+        }
+
+        wj.addObserver(zs.hunger_res);
+        wj.addObserver(lw.hunger_res);
+
+        wj.hunger();
+    </script>
+</body>
+</html>

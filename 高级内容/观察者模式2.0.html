@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*封装成一个类*/
+        class Publisher {
+            constructor(name) {
+                this.name = name;
+            }
+
+            addObserver(type, observer) {
+                this.user = this.user || {};
+
+                this.user[type] = this.user[type] || [];
+                this.user[type].push(observer);
+            }
+            removerObserver(type, observer) {
+                var index = this.user[type].indexOf(observer);
+                if (index !== -1) {
+                    this.user[type].splice(index, 1);
+                }
+            }
+
+            publish(type) {
+                this.user[type].forEach(ele => ele());
+            }
+        }
+
+        /* 发布者对象 */
+        var xg = new Publisher('xg');
+        xg.hunger = function () {
+            console.log('xg------我饿了----');
+            this.publish('hunger')
+        }
+        xg.cold = function () {
+            console.log('xg---我好冷------');
+            this.publish('cold')
+        }
+
+        var donggua = new Publisher('donggua');
+        donggua.codding = function () {
+            console.log('donggua---我喜欢电竞------');
+            this.publish('coding')
+        }
+
+        /* 订阅者对象 */
+        var zs = {
+            hunger_xg() {
+                console.log('来啦,给你买包包吃');
+            },
+            hunger_donggua() {
+                console.log('呵呵');
+            },
+
+            play(){
+                console.log('来一把王者荣耀---zs');
+                this.publish('play');
+            }
+        }
+        var lw = {
+            hunger_xg() {
+                console.log('我也。。给你狗粮把');
+            },
+            codding_donggua() {
+                console.log('我也。。喜欢玩游戏');
+            }
+        }
+        var zsmm = {
+            play_zs() {
+                console.log('不要打游戏 啦---zsmm');
+            }
+        }
+
+        xg.addObserver('hunger', zs.hunger_xg);
+        xg.addObserver('hunger', lw.hunger_xg);
+        xg.hunger();
+
+        donggua.addObserver('coding', lw.codding_donggua);
+        donggua.codding();
+
+        /*订阅者可能也会成为状态的发布者*/
+        function makePublish(target) {
+            var keys = Object.getOwnPropertyNames(donggua.__proto__);
+            keys.splice(0, 1);      //删除掉constructor
+            keys.forEach(ele => {
+                target[ele] = Publisher.prototype[ele];
+            })
+        }
+console.log('***************************************');
+
+        makePublish(zs);
+        zs.addObserver('play', zsmm.play_zs);
+        zs.play();
+
+    </script>
+</body>
+
+</html>

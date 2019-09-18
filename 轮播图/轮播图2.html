@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./jquery-3.4.1.js"></script>
+    <script src="./bannerManager.js"></script>
+</head>
+
+<body>
+    <!-- <div class="slider">
+        <ul class="slider-box">
+
+        </ul>
+        <div class="slider-control">
+
+        </div>
+        <ol class="slider-nav">
+            
+        </ol>
+    </div> -->
+
+    <script>
+        
+        // var arr1 = [
+        //     "src/1.jpg",
+        //     "src/2.jpg",
+        //     "src/3.jpg",
+        //     "src/4.jpg",
+        //     "src/5.jpg", 
+        //     "src/6.jpg",
+        // ];
+
+
+        // 创建实例对象
+        // let banner = new BannerManger(arr1);
+        // banner.init();
+        $.getJSON('./src.json',(json) => (new BannerManger(json)).init());
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            background-color: #250;
+            position: relative;
+        }
+        #demo{
+            width: 50px;
+            height: 50px;
+            background-color: #369;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+        }
+    </style>
+    <script src="./jquery-3.4.1.js"></script>
+</head>
+<body>
+    <div>我是一个div</div>
+    <p>我是原始的p</p>
+
+    <div class="box">
+        <div id="demo">div的内容</div>
+    </div>
+
+
+    <script>
+        var oP = document.querySelector('p');
+        oP.style.height = '100px';
+        oP.style.width = '500px';
+        oP.style.background = '#ff0';
+        oP.style.border = '1px solid #111';
+
+
+        $(function(){
+            //设置div标签的样式， 语法：$().css(样式名，样式值)
+
+            // //第一种写法
+            // $("div").css("border",'10px solid #c66');
+            // $("div").css("width",'500px');
+            // $("div").css("height",'100px');
+            // $("div").css("background",'#ccc')
+
+
+            // //第二种写法
+            // $("div").css("border",'10px solid #c66')
+            //         .css("width",'500px')
+            //         .css("height",'100px')
+            //         .css("background",'#ccc');
+  
+
+            // //第三种写法
+            // $("div").css({
+            //     'width': '500px',
+            //     'height': '100px',
+            //     'border': '10px solid #195',
+            //     'background': '#ddd'
+            // })
+                   
+                   
+            $('.box').width(400);
+            $('.box').height(200);
+
+            /*位置相关操作*/
+            console.log( $("#demo").offset().left );         //相对于窗口
+            console.log( $("#demo").position() );       //相对于父标签
+
+            
+        })
+    </script>
+</body>
+</html>

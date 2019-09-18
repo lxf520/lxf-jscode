@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 500px;
+            height: 50px;
+        }
+    </style>
+
+    <script src="./jquery-3.4.1.js"></script>
+</head>
+
+<body>
+
+    <ul>
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+        <li>li5</li>
+    </ul>
+
+    <div>更改内容</div>
+    <button>html</button>
+    <button>text</button>
+    <script>
+        $(function () {
+            $("li").click(function () {
+                console.log(this.innerText, $(this).index());
+
+                var index = $(this).index();
+                console.log(index);
+            })
+
+            $("button:eq(0)").click(function(){
+                $("div").html('<h1>山中无老虎</h1>')
+            })
+            $("button:eq(1)").click(function(){
+                $("div").text('猴子称霸王')
+            })
+        })
+    </script>
+
+
+    <div id="ID">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+    <script>
+        // DOM 操作方法
+        // 1-创建标签
+        var oDiv1 = document.createElement('div');
+        oDiv1.innerHTML = '春天来啦';
+        oDiv1.className = 'box';
+
+        var oDiv2 = $('<div>冬天来啦</div>');
+        oDiv2.addClass('box');
+
+        // 2-标签插入
+        document.body.appendChild(oDiv1);
+
+        $("body").append(oDiv2);
+
+        // 3-标签删除
+        // document.body.removeChild(oDiv1);
+        // oDiv2.remove();
+
+
+        // 4-清空
+        // $("#ID").remove();           //ID自己都没了
+        $("#ID").empty();               //ID的子代没了，自己还在
+
+
+        
+    </script>
+</body>
+
+</html>

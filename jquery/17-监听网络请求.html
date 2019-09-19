@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.4.1.js"></script>
+
+</head>
+
+<body>
+    <button>按钮</button>
+    <script>
+        /* 在页面发送多个网络请求 */
+        $("button").click(function () {
+
+            // ajaxSend  监听网络请求开始发送
+            // ajaxComplete 监听网络请求结束
+            // ajaxStart  监听页面中的第一次网络请求开始
+            // ajaxStop  监听页面中最后一次网络请求结束
+
+            $(document).ajaxSend(function () {
+                console.log('ajaxSend');
+            })
+            $(document).ajaxComplete(function () {
+                console.log('ajaxComplete');
+            })
+            $(document).ajaxStart(function () {
+                console.log('ajaxStart');
+            })
+            $(document).ajaxStop(function () {
+                console.log('ajaxStop');
+            })
+
+            $.ajaxSetup({
+                type: 'post',
+                url: './server/03.server.php',
+                global: true,
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response);
+                  }
+            })
+
+            $.ajax({
+                data: 'username=zs'
+            })
+            $.ajax({
+                data: 'username=ls&password=123'
+            })
+        })
+    </script>
+</body>
+
+</html>

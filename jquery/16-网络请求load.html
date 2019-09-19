@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <div id="result"></div>
+    <script>
+        /* 当页面加载完就发送网络请求给服务器获取数据，并且根据数据来创建标签把标签插入到div中 */
+        $.ajax({
+            type: "get",
+            url: "./server/01-getData.php",
+            success: function(res) {
+                var dataArr = res.split(" ");
+                // console.log(dataArr);
+                $("#result").html(dataArr.map(ele => `<span>${ele}</span>`).join(""));
+            }
+        });
+
+        /* 作用：发送网络请求获取数据并根据数据来设置指定标签的内容 */
+        $("#result").load("./server/02.getData.html .box1,.box2");
+    </script> 
+</body>
+
+</html>

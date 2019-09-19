@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery-3.4.1.js"></script>
+    <script src="./js/index.js"></script>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="nav_content">
+            <div class="nav_right">
+                <form>
+                    <input type="text" id="textID">
+                    <input type="submit" value="添加">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="header">
+            <ul>
+                <li class="cur">待办事项</li>
+                <li>已完成事项</li>
+            </ul>
+        </div>
+        <div class="body active">
+            <ul class="task">
+                <li>
+                    <input type="checkbox">
+                    <span class="iTem_title">待完成-Task1</span>
+                    <span class="detail">详情</span>
+                    <span class="del">删除</span>
+                </li>
+            </ul>
+        </div>
+        <div class="body">
+            <ul class="finish_task">
+                <li><input type="checkbox"><span class="iTem_title">已完成-Task1</span><span class="detail">详情</span><span class="del">删除</span></li>
+                <li><input type="checkbox"><span class="iTem_title">已完成-Task2</span><span class="detail">详情</span><span class="del">删除</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mask">
+        <div class="detail_content">
+            <div class="detail_header">
+                <span class="title">我是标题</span>
+                <span class="close">关闭</span>
+            </div>
+            <div class="detail_body">
+                <textarea></textarea>
+                <input type="text" id="dateTime">
+                <button class="update">更新</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

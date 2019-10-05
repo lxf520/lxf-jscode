@@ -1,0 +1,40 @@
+@bgc:#195;          //变量
+.base(@w,@h){         //混入
+    width: @w;
+    height: @h;
+    line-height: @h;
+}
+*{margin: 0;padding: 0;list-style: none}
+// 嵌套
+body{
+    .header{
+        .first{
+            .base(500px,50px);
+            ul{
+                .base(500px,50px);
+                li{
+                    float: left;
+                    width: 100px;
+                    height: 50px;
+                    background-color: @bgc;
+                }
+            }
+        }
+    }
+    .body{
+        margin: 20px;
+        .top{
+            width: 600px;
+            height: 200px;
+        }
+        ul{
+            .base(500px,50px);
+            li{
+                float: left;
+                width: 100px;
+                height: 50px;
+                background-color: @bgc;
+            }
+        }
+    }
+}

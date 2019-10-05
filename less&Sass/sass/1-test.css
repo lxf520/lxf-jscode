@@ -1,0 +1,16 @@
+@charset "UTF-8";
+/*1-没有传递参数*/
+.baseBorder, div {
+  border: 1px solid #ccc;
+}
+
+/*2-需要传递参数*/
+div {
+  color: #195;
+  width: 800px;
+  height: 100px;
+}
+
+span {
+  background-color: #195;
+}

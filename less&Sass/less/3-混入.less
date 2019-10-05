@@ -1,0 +1,28 @@
+@bgc: #195;
+@danger: red;
+.base{
+    width: 500px;
+    height: 100px;
+    background-color: @bgc;
+}
+
+//传参
+.fn(@w,@h){
+    width: @w;
+    height: @h;
+    line-height: @h;
+}
+div{
+    .base();
+    margin: 20px;
+}
+
+span{
+    background-color: @bgc;
+    width: 100px;
+}
+
+p{
+    .fn(200px,100px);
+    background-color: @danger;
+}

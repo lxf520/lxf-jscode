@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+body .header .first {
+  width: 500px;
+  height: 50px;
+  line-height: 50px;
+}
+body .header .first ul {
+  width: 500px;
+  height: 50px;
+  line-height: 50px;
+}
+body .header .first ul li {
+  float: left;
+  width: 100px;
+  height: 50px;
+  background-color: #119955;
+}
+body .body {
+  margin: 20px;
+}
+body .body .top {
+  width: 600px;
+  height: 200px;
+}
+body .body ul {
+  width: 500px;
+  height: 50px;
+  line-height: 50px;
+}
+body .body ul li {
+  float: left;
+  width: 100px;
+  height: 50px;
+  background-color: #119955;
+}

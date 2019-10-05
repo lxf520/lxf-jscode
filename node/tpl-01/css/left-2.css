@@ -1,0 +1,15 @@
+ul li{
+    height: 44px;
+    line-height: 44px;
+    border-bottom: 1px dashed #fff;
+}
+
+img{
+    width: 100%;
+}
+
+.left
+{
+    background: #444;
+    color: #fff;
+}

@@ -1,0 +1,37 @@
+//  spin(@color, 10%); //变亮
+//  darken(@color, 10%);  //变暗
+//  saturate(@color, 10%); //变浓
+//  spin(@color, 10%);/变淡 spin(@color, 10); //色相值增加
+//  spin(@color, -10); //色相值减少  
+//  mix(@color1, @color2); //混合两种颜色
+
+@color:red;
+
+div{
+  width: 300px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  margin: 5px;
+  background: @color
+}
+
+div:nth-of-type(1){
+  background: spin(@color, 10%);
+}
+div:nth-of-type(2) {
+  background: spin(@color, 20%);
+}
+div:nth-of-type(3) {
+  background: spin(@color, 30%);
+}
+div:nth-of-type(4) {
+  background: spin(@color, 60%);
+}
+div:nth-of-type(5) {
+  background: spin(@color, 80%);
+}
+
+div:nth-of-type(6) {
+  background: mix(red, blue);
+}

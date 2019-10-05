@@ -1,0 +1,19 @@
+/* 变量：如果某个样式值需要用在多个地方，那么可以考虑抽取为一个变量 */
+/* @变量名：值； */
+/* 声明一个变量，变量名字叫做bgc,变量的值为#195 */
+div {
+  width: 500px;
+  margin: 10px;
+  height: 40px;
+  line-height: 40px;
+  color: red;
+  background: #28c9d4;
+}
+span {
+  background: #28c9d4;
+}
+button {
+  width: 500px;
+  height: 40px;
+  line-height: 40px;
+}
